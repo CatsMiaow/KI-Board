@@ -1,0 +1,42 @@
+/*
+ * http://getbootstrap.com/customize - 하려 했으나, 원본 소스와 차이가 있어 강제 선언으로 처리
+ * font-family:"돋움",Dotum,"굴림",Gulim,AppleGothic,Sans-serif; color:#383d41;
+ */
+body, input, button { font-size:12px; }
+img { max-width: 100%; }
+
+
+/* custom widths .span !important? */
+.auto { display:inline-block; width:auto; }
+.span1 { display:inline-block; width:50px; }
+.span2 { display:inline-block; width:100px; }
+.span3 { display:inline-block; width:150px; }
+.span4 { display:inline-block; width:200px !important; }
+.span5 { display:inline-block; width:250px; }
+.span6 { display:inline-block; width:300px; }
+.span7 { display:inline-block; width:350px; }
+.span8 { display:inline-block; width:400px; }
+.span9 { display:inline-block; width:450px; }
+.span10 { display:inline-block; width:500px; }
+
+
+/* custom padding */
+.pdt1 { padding-top	  :5px; } .pdt2 { padding-top   :10px; } .pdt3 { padding-top   :15px; } .pdt4 { padding-top   :20px; }
+.pdl1 { padding-left  :5px; } .pdl2 { padding-left  :10px; } .pdl3 { padding-left  :15px; } .pdl4 { padding-left  :20px; }
+.pdr1 { padding-right :5px; } .pdr2 { padding-right :10px; } .pdr3 { padding-right :15px; } .pdr4 { padding-right :20px; }
+.pdb1 { padding-bottom:5px; } .pdb2 { padding-bottom:10px; } .pdb3 { padding-bottom:15px; } .pdb4 { padding-bottom:20px; }
+
+
+/* custom margin */
+.mgt1 { margin-top	 :5px; } .mgt2 { margin-top   :10px; } .mgt3 { margin-top   :15px; } .mgt4 { margin-top   :20px; }
+.mgl1 { margin-left  :5px; } .mgl2 { margin-left  :10px; } .mgl3 { margin-left  :15px; } .mgl4 { margin-left  :20px; }
+.mgr1 { margin-right :5px; } .mgr2 { margin-right :10px; } .mgr3 { margin-right :15px; } .mgr4 { margin-right :20px; }
+.mgb1 { margin-bottom:5px; } .mgb2 { margin-bottom:10px; } .mgb3 { margin-bottom:15px; } .mgb4 { margin-bottom:20px; }
+
+
+/* daum editor modify */
+#write_content p { margin:0; }
+
+
+.wrap_content { padding:10px; margin-bottom:10px; background-color:#fff; border:1px solid #d6d6d6; }
+.body_gray { padding-top:60px; padding-bottom:20px; background-color:#f8f8f8; }

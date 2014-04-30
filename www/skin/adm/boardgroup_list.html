@@ -1,0 +1,61 @@
+<form class="form-inline" name="fsearch" method="get" action="<?=ADM_PATH?>/boardgroup/lists" onsubmit="return doSearch(this);">
+<div>
+	&deg; <a href="<?=ADM_PATH?>/boardgroup/lists">처음</a> (그룹수 : <?=$total_cnt?>개)
+	<p class="pull-right">
+		<select name="sfl" class="form-control span2">
+			<option value="gr_subject">제목</option>
+        	<option value="gr_id">ID</option>
+        	<option value="gr_admin">관리자</option>
+        </select>
+        <input type="text" name="stx" class="form-control span3" value="<?=$stx?>" />
+        <button type="submit" class="btn btn-primary">검색</button>
+	</p>
+</div>
+</form>
+
+<form name="fboardgrouplist" method="post" action="">
+<input type="hidden" name="token" value="<?=$token?>"/>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th><input type="checkbox" id="allcheck"/></th>
+            <th><a href="<?=$sort_gr_id?>">그룹아이디</a></th>
+            <th><a href="<?=$sort_gr_subject?>">제목</a></th>
+            <th><a href="<?=$sort_gr_admin?>">그룹관리자</a></th>
+            <th>게시판</th>
+            <th><?=$s_add?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<? foreach ($list as $o): ?>
+		<tr>
+			<td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
+			<td><strong><?=$o->id?></strong></td>
+			<td><input type="text" name="gr_subject[<?=$o->id?>]" class="form-control" maxlength="20" value="<?=$o->subject?>" /></td>
+			<td><input type="text" name="gr_admin[<?=$o->id?>]" class="form-control" value="<?=$o->admin?>" /></td>
+			<td><a href="<?=ADM_PATH?>/board/lists?sfl=gr_id&stx=<?=$o->id?>"><?=$o->bo_cnt?></a></td>
+			<td><span class="btn-group"><?=$o->s_mod?><?=$o->s_del?></span></td>
+		</tr>
+		<? endforeach; ?>
+	</tbody>
+</table>
+
+<div class="clearfix">
+	<button type="button" class="btn btn-info" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/boardgroup/update')">선택수정</button>
+
+	<div class="pull-right">
+		<?=$paging?>
+	</div>
+</div>
+
+</form>
+
+
+<? if ($stx): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$sfl?>';
+//]]>
+</script>
+<? endif; ?>

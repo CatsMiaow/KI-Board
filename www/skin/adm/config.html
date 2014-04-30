@@ -1,0 +1,59 @@
+<div class="page-header">
+	<h4>사용자 환경설정 값 확인 페이지</h4>
+	<br/>&nbsp;&nbsp;- 설정 값의 <strong>"</strong>(홀따옴표)와 <strong>"</strong>(쌍따옴표)는 출력되지 않습니다.
+	<br/>&nbsp;&nbsp;- 설정 양식 -> <code>$config["cf_title"] = "테스티드"; // 기본 타이틀</code>
+	<br/>&nbsp;&nbsp;- <label class="checkbox-inline"><input type="checkbox" id="variable" value="1"/> 설정 변수로 보기</label>
+	<br/><br/>
+</div>
+
+<div id="confList" class="row">
+	<div class="col-md-6">
+		<h5>&deg; 기본 설정</h5>	
+		<dl class="dl-horizontal">
+			<? foreach ($basic as $o): ?>
+			<dt><span class="text-success"><?=$o->comment?></span><span class="text-danger hide"><?=$o->title?></span></dt>
+			<dd class="text-info"><?=$o->value?></dd>
+			<? endforeach; ?>
+		</dl>
+
+		<hr/>
+
+		<h5>&deg; 회원가입 설정</h5>
+		<dl class="dl-horizontal">
+			<? foreach ($register as $o): ?>
+			<dt><span class="text-success"><?=$o->comment?></span><span class="text-danger hide"><?=$o->title?></span></dt>
+			<dd class="text-info"><?=$o->value?></dd>
+			<? endforeach; ?>
+		</dl>
+	</div>
+	<div class="col-md-6">
+		<h5>&deg; 게시판 설정</h5>
+		<dl class="dl-horizontal">
+			<? foreach ($board as $o): ?>
+			<dt><span class="text-success"><?=$o->comment?></span><span class="text-danger hide"><?=$o->title?></span></dt>
+			<dd class="text-info"><?=$o->value?></dd>
+			<? endforeach; ?>
+		</dl>
+
+		<hr/>
+
+		<h5>&deg; 아이콘 설정</h5>
+		<dl class="dl-horizontal">
+			<? foreach ($icon as $o): ?>
+			<dt><span class="text-success"><?=$o->comment?></span><span class="text-danger hide"><?=$o->title?></span></dt>
+			<dd class="text-info"><?=$o->value?></dd>
+			<? endforeach; ?>
+		</dl>
+	</div>
+</div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$('#variable').click(function() {
+	if (this.checked)
+		$('#confList dl > dt > span:first-child').addClass('hide').siblings().removeClass('hide');
+	else
+		$('#confList dl > dt > span:first-child').removeClass('hide').siblings().addClass('hide');
+});
+//]]>
+</script>

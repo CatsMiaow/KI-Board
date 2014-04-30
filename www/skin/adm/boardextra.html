@@ -1,0 +1,106 @@
+<div class="page-header">
+	<h4><?=$bo_subject?> <small>여분필드 관리</small></h4>
+</div>
+
+<form name="boardextra" method="post" action="">
+<input type="hidden" name="bo_table" value="<?=$bo_table?>" />
+<input type="hidden" name="type" value="<?=$type?>" />
+<input type="hidden" name="w" value="<?=$w?>" />
+
+<?=validation_errors('<pre>','</pre>')?>
+
+<? if (!$is_table): ?>
+<p class="text-center"><button type="submit" class="btn btn-success">테이블 생성</button></p>
+
+<? else: ?>
+<div>
+	&deg; <strong>필드 관리( <span class="text-info">prefix는 <code>ex_</code> 입니다.</span> )</strong>
+	<p class="pull-right">
+		<button type="button" class="btn btn-danger" onclick="tableDelete();">테이블 삭제</button>
+	</p>
+</div>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+            <th>이름</th>
+			<th>속성</th>
+			<th>크기</th>
+			<th>양수</th>
+			<th>관리</th>
+		</tr>
+	</thead>
+	<tbody>
+		<? foreach ($list as $o): ?>
+		<tr>
+			<td><?=$o->name?></td>
+			<td><input type="text" id="<?=$o->name?>_attr" class="form-control" value="<?=$o->attr?>" /></td>
+			<td><input type="text" id="<?=$o->name?>_size" class="form-control text-right" maxlength="3" value="<?=$o->size?>" /></td>
+			<td>
+				<select id="<?=$o->name?>_unsg" class="form-control">
+					<option value="0">NO</option>
+					<option value="1"<?=$o->unsg?>>YES</option>
+				</select>
+			</td>
+			<td>
+				<span class="btn-group">
+					<button type="button" class="btn btn-sm btn-default" onclick="extraSubmit('<?=$o->name?>', 'u');"><span class="glyphicon glyphicon-edit"></span></button>
+					<button type="button" class="btn btn-sm btn-danger" onclick="extraSubmit('<?=$o->name?>', 'd');"><span class="glyphicon glyphicon-trash"></span></button>
+				</span>
+			</td>
+		</tr>
+		<? endforeach; ?>
+
+		<tr id="extraAdd">
+			<td><input type="text" name="name" class="form-control" maxlength="20" value="" /></td>
+			<td><input type="text" name="attr" class="form-control" value="" /></td>
+			<td><input type="text" name="size" class="form-control text-right" maxlength="3" value="" /></td>
+			<td>
+				<select name="unsg" class="form-control">
+					<option value="0">NO</option>
+					<option value="1">YES</option>
+				</select>
+			</td>
+			<td><button type="submit" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span></button></td>
+		</tr>
+	</tbody>
+</table>
+<? endif; ?>
+
+<hr/>
+
+<p class="text-center">
+	<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/board/form/u/<?=$bo_table?>';">목록</button>
+</p>
+
+</form>
+
+
+<script type='text/javascript'>
+//<![CDATA[
+function extraSubmit(name, w) {
+	if (w == 'd' && !confirm("한번 삭제한 필드는 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?"))
+		return;
+
+	document.getElementById('extraAdd').style.display = 'none';
+
+	var f = document.boardextra;
+	f.w.value	 = w;
+	f.name.value = name;
+	f.attr.value = document.getElementById(name+'_attr').value;
+	f.size.value = document.getElementById(name+'_size').value;
+	f.unsg.value = document.getElementById(name+'_unsg').value;
+	f.submit();
+}
+
+function tableDelete() {
+	if (!confirm("한번 삭제한 테이블은 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?"))
+		return;
+
+	var f = document.boardextra;
+	f.type.value = 'table';
+	f.w.value = 'd'
+	f.submit();
+}
+//]]>
+</script>

@@ -1,0 +1,17 @@
+#category ul { position:relative; display:block; padding:3px 0 0 11px; background:url(/img/useful/category/line_tree_vr.gif) repeat-y 11px -1px; zoom:1; }
+#category ul li { list-style:none; position:relative; padding:3px 0 2px 8px; white-space:nowrap; background:url(/img/useful/category/line_tree_hr.gif) no-repeat 1px 5px !important; }
+#category ul li span.k_tree_label { position:relative; left:16px; _left /**/:0; top:0; }
+#category ul li button { display:inline-block; position:relative; _left /**/:-16px; _top:-2px; width:13px; height:13px; _width:17px; _height:17px; margin:0 -13px 0 0; _margin:0 -17px -2px -2px; text-indent:-10000px; _text-indent:0; _font:0/0 Sans-serif; border:none; background:url(/img/useful/category/btn_tree_collapse.gif) no-repeat; cursor:pointer; _cursor /**/:hand; vertical-align:top; }
+*:first-child+html #category ul li button { width:17px; height:17px; top:-2px; text-indent:0; margin:0 -17px -2px -2px; font:0/0 Sans-serif; }
+#category ul li ul { display:none; padding:2px 0 0 0; margin:0 0 -2px 6px; background-position:left top;}
+#category ul li ul li { display:none; }
+#category ul li.k_tree_on button { background-position:0 -13px; _background-position:2px -11px; }
+*:first-child+html #category ul li.k_tree_on button { background-position:2px -11px; }
+#category ul li.k_tree_off button { background-position:0 0; _background-position:2px 2px; }
+*:first-child+html #category ul li.k_tree_off button { background-position:2px 2px; }
+#category ul li.k_tree_on ul { display:block; }
+#category ul li.k_tree_on ul li { display:block; }
+#category ul li.k_tree_off ul { display:none; }
+#category ul li.k_tree_off ul li { display:none; }
+#category ul li.k_tree_last { background:url(/img/useful/category/line_tree_last_hr.gif) no-repeat 0 5px !important; }
+#category ul li span { cursor:pointer; _cursor /**/:hand; }

@@ -1,0 +1,317 @@
+<form id="fmember" class="form-horizontal" name="fmember" method="post" action="<?=ADM_PATH?>/member/form" enctype="multipart/form-data">
+<input type="hidden" name="w" value="<?=$w?>" />
+<input type="hidden" name="token" value="<?=$token?>" />
+
+<?=validation_errors('<pre>','</pre>')?>
+<fieldset>
+	<legend>&deg; <strong><?=$title?></legend>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="reg_mb_id">아이디</label>
+
+		<div class="col-md-9">
+			<? if ($w): ?>
+			<p class="form-control-static text-primary"><strong><?=$mb_id?></strong></p>
+			<input type="hidden" name="mb_id" value="<?=$mb_id?>" />
+
+			<? else: ?>
+			<div class="row">
+				<div class="col-md-12">
+					<p><input type="text" id="reg_mb_id" name="mb_id" class="form-control" maxlength="20" /></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<button type="button" id="btn_id" class="btn btn-info" data-loading-text="확인 중...">중복확인</button>
+				</div>
+				<div class="col-md-10">
+					<span id="msg_mb_id"></span>
+					<br/>※ 영문자, 숫자, _ 만 입력 가능. 최소 3자이상 입력하세요.
+				</div>
+			</div>
+			<? endif; ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_password">비밀번호</label>
+		<div class="col-md-4">
+			<input type="password" id="mb_password" name="mb_password" class="form-control" maxlength="20" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_name">이름(실명)</label>
+		<div class="col-md-4">
+			<input type="text" id="mb_name" name="mb_name" class="form-control" maxlength="20" value="<?=$mb_name?>" />
+		</div>
+	</div>
+
+	<? if ($cf_use_nick): ?>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="reg_mb_nick">별명</label>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-12">
+					<input type="hidden" name="mb_nick_default" value="<?=$mb_nick?>" />
+					<p><input type="text" id="reg_mb_nick" name="mb_nick" class="form-control" maxlength="20" value="<?=$mb_nick?>" /></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<button type="button" id="btn_nick" class="btn btn-info" data-loading-text="확인 중...">중복확인</button>
+				</div>
+				<div class="col-md-10">
+					<span id="msg_mb_nick"></span>
+					<br/>공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)
+				</div>
+			</div>
+		</div>
+	</div>
+	<? endif; ?>
+
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_level">권한</label>
+		<div class="col-md-2">
+			<?=$mb_level_select?>
+		</div>
+	</div>
+
+	<? if ($w && $use_point): ?>
+	<div class="form-group">
+		<label class="col-md-3 control-label">포인트</label>
+		<div class="col-md-9">
+			<p class="form-control-static"><a href="<?=ADM_PATH?>/point/lists?sfl=mb_id&stx=<?=$mb_id?>"><?=$mb_point?></a> 점</p>
+		</div>
+	</div>
+	<? endif; ?>
+
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="reg_mb_email">이메일</label>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-12">
+					<input type="hidden" name="old_email" value="<?=$mb_email?>" />
+					<p><input type="email" id="reg_mb_email" name="mb_email" class="form-control" maxlength="50" value="<?=$mb_email?>" /></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<button type="button" id="btn_email" class="btn btn-info" data-loading-text="확인 중...">중복확인</button>
+				</div>
+				<div class="col-md-10">
+					<span id="msg_mb_email"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_birth">생년월일</label>
+		<div class="col-md-3">
+			<input type="text" id="mb_birth" name="mb_birth" class="form-control" maxlength="10" value="<?=$mb_birth?>" readonly="readonly" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_sex">성별</label>
+		<div class="col-md-2">
+			<select id="mb_sex" name="mb_sex" class="form-control">
+				<option value="">----</option>
+				<option value="M">남자</option>
+				<option value="F">여자</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_homepage">홈페이지</label>
+		<div class="col-md-4">
+			<input type="url" id="mb_homepage" name="mb_homepage" class="form-control" maxlength="40" value="<?=$mb_homepage?>" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_tel">전화번호</label>
+		<div class="col-md-4">
+			<input type="tel" id="mb_tel" name="mb_tel" class="form-control" maxlength="14" value="<?=$mb_tel?>" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_hp">휴대폰번호</label>
+		<div class="col-md-4">
+			<input type="tel" id="mb_hp" name="mb_hp" class="form-control" maxlength="14" value="<?=$mb_hp?>" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_addr2">주소</label>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-2">
+					<input type="text" name="mb_zip1" class="form-control" maxlength="3" readonly="readonly" value="<?=$mb_zip1?>" />
+				</div>
+				<div class="col-md-2">
+					<input type="text" name="mb_zip2" class="form-control" maxlength="3" readonly="readonly" value="<?=$mb_zip2?>" />
+				</div>
+				<div class="col-md-8">
+					<button type="button" class="btn btn-info" onclick="win_zip('fmember','mb_zip1','mb_zip2','mb_addr1','mb_addr2');">우편번호검색</button>
+				</div>
+			</div>
+			<p></p>
+			<div class="row">
+				<div class="col-md-12">
+					<input type="text" name="mb_addr1" class="form-control" maxlength="100" readonly="readonly" value="<?=$mb_addr1?>" />
+				</div>
+			</div>
+			<p></p>
+			<div class="row">
+				<div class="col-md-12">
+					<input type="text" id="mb_addr2" name="mb_addr2" class="form-control" maxlength="100" value="<?=$mb_addr2?>" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<? if ($cf_use_icon): ?>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_icon">회원아이콘</label>
+		<div class="col-md-5">
+			<div class="input-group">
+  				<span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+				<input type="file" id="mb_icon" name="mb_icon" class="form-control" />
+			</div>
+			<span class="help-block">
+				<p>아이콘 크기는 가로(<?=$icon_width?>픽셀) x 세로(<?=$icon_height?>픽셀) 이하로 해주세요.
+				<br/>( gif 이미지만 가능 / 용량 : <?=$icon_size?>Kbyte 이하만 등록됩니다. )</p>
+
+				<? if ($icon_file): ?>
+				<p><img src="<?=$icon_file?>" align="top" alt="회원아이콘" />
+				<label class="checkbox-inline"><input type="checkbox" name="del_mb_icon" value="1" /> 삭제</label></p>
+				<? endif; ?>
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_named">이미지이름</label>
+		<div class="col-md-5">
+			<div class="input-group">
+  				<span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+				<input type="file" id="mb_named" name="mb_named" class="form-control" />
+			</div>
+			<span class="help-block">
+				<p>이미지 크기는 가로(<?=$named_width?>픽셀) x 세로(<?=$named_height?>픽셀) 이하로 해주세요.
+				<br/>( gif 이미지만 가능 / 용량 : <?=$named_size?>Kbyte 이하만 등록됩니다. )</p>
+
+				<? if ($named_file): ?>
+				<p><img src="<?=$named_file?>" align="top" alt="이미지이름"/>
+				<label class="checkbox-inline"><input type="checkbox" name="del_mb_named" value="1" /> 삭제</label></p>
+				<? endif; ?>
+			</span>
+		</div>
+	</div>
+	<? endif; ?>
+
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_mailling">메일수신</label>
+		<div class="col-md-9">
+			<label class="checkbox-inline">
+				<input type="checkbox" id="mb_mailling" name="mb_mailling" value="1" <?=$mailling_chk?> /> 정보 메일을 받음
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_open">정보공개</label>
+		<div class="col-md-9">
+			<label class="checkbox-inline">
+				<input type="checkbox" id="mb_open" name="mb_open" value="1" <?=$open_chk?> /> 타인에게 자신의 정보를 공개
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_profile">자기소개</label>
+		<div class="col-md-9">
+			<textarea id="mb_profile" name="mb_profile" class="form-control" rows="3"><?=$mb_profile?></textarea>
+		</div>
+	</div>
+
+	<? if ($w): ?>
+	<div class="form-group">
+		<label class="col-md-3 control-label">회원가입일</label>
+		<div class="col-md-9">
+			<p class="form-control-static"><?=$mb_datetime?></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label">최근접속일</label>
+		<div class="col-md-9">
+			<p class="form-control-static"><?=$mb_today_login?></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label">IP주소</label>
+		<div class="col-md-9">
+			<p class="form-control-static"><?=$mb_ip?></p>
+		</div>
+	</div>
+
+	<? if ($use_email_certify): ?>
+	<div class="form-group">
+		<label class="col-md-3 control-label">인증일시</label>
+		<div class="col-md-9">
+			<p class="form-control-static"><?=$mb_email_certify?> <?=$passive_certify?></p>
+		</div>
+	</div>
+	<? endif; ?>
+
+	<? endif; ?>
+
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="mb_leave_date">탈퇴일자</label>
+		<div class="col-md-3">
+			<input type="text" id="mb_leave_date" name="mb_leave_date" class="form-control" maxlength="8" value="<?=$mb_leave_date?>"/>
+		</div>
+	</div>
+
+	<hr />
+	
+	<p class="text-center">
+		<button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/member/lists';">목록</button>
+	</p>
+</fieldset>
+
+</form>
+
+
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/datepicker.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/validate.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/validate_ext.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/validate_reg.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+document.fmember.mb_level.value = '<?=$mb_level?>';
+document.fmember.mb_sex.value = '<?=$mb_sex?>'; 
+
+var year = new Date().getFullYear();
+$('#mb_birth').datepicker({yearRange:(year-60)+':'+year});
+
+$(function() {
+	$('#fmember').validate({
+		onkeyup: false,
+		rules: {
+			mb_id: { required:true, reg_mb_id:true },
+			mb_nick: { required:true, reg_mb_nick:true },
+			mb_email: { required:true, reg_mb_email:true },
+			mb_name: { required:true, minlength:2, hangul:true },
+			mb_password: { required:"input[name='w']:blank", minlength:3 },
+			mb_level: 'required',
+			mb_icon : { accept:'image/gif' },
+			mb_named : { accept:'image/gif' }
+		},
+		messages: {
+			mb_id: '아이디 중복확인 결과가 올바르지 않습니다.',
+			mb_nick: '별명 중복확인 결과가 올바르지 않습니다.',
+			mb_email: '이메일 중복확인 결과가 올바르지 않습니다.',
+			mb_name: { required:'이름을 입력하세요.', minlength:'최소 2자 이상 입력하세요.' },
+			mb_password: { required:'비밀번호를 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
+			mb_level: '회원 권한을 선택하여 주십시오.',
+			mb_icon: '파일이 gif 이미지가 아닙니다.',
+			mb_named: '파일이 gif 이미지가 아닙니다.'
+		}
+	});
+});
+//]]>
+</script>

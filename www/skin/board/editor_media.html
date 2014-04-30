@@ -1,0 +1,109 @@
+<div id="wrapper" class="container">
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="page-header">
+			<h4>외부컨텐츠 삽입</h4>
+			<span class="glyphicon glyphicon-info-sign"></span> 아래 <span class="text-info">멀티미디어</span> 등의 삽입 방식을 선택한 후, 주소를 입력하세요.
+		</div>
+
+		<div>
+			<label class="radio-inline">
+				<input type="radio" name="codeType" onclick="selectType('codeSource');" checked="checked" value="source" />
+				html(embed,object 소스입력)
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="codeType" onclick="selectType('codeUrl');" value="url"/>
+				멀티미디어 링크
+			</label>
+		</div>
+
+		<dl>
+			<dt id="codeSource">소스입력</dt>
+			<dd><textarea name="source" class="form-control" rows="5"></textarea></dd>
+			<dt id="codeUrl" class="text-muted">링크입력</dt>
+			<dd><input type="text" name="url" class="form-control" disabled="true" /></dd>
+		</dl>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+<hr/>
+
+<footer>
+<p class="text-center">
+	<button type="button" class="btn btn-sm btn-primary" title="등록" onclick="done();">등록</button>&nbsp;&nbsp;&nbsp;
+	<button type="button" class="btn btn-sm btn-danger" title="취소" onclick="closeWindow();">취소</button>
+</p>
+</footer>
+
+</div>
+
+
+<script type='text/javascript' src='<?=EDT_DIR?>/js/popup.js'></script>
+<script type='text/javascript'>
+// <![CDATA[
+function initEmbeder() {
+	var _opener = PopupUtil.getOpener();
+	if(!_opener) {
+		alert('잘못된 경로로 접근하셨습니다.');
+		return; 
+	}
+
+	var _embeder = getEmbeder('media');
+	window.execEmbed = _embeder.embedHandler;
+	
+	autoResizeHeight($tx('wrapper'));
+}
+initEmbeder();
+
+// 코드 삽입 완료 후
+function done() {
+	var _data = {}
+	  , types = document.getElementsByName('codeType');
+
+	if (types[1].checked)
+		_data.url = document.getElementsByName('url')[0].value.trim();
+	else if (types[0].checked)
+		_data.code = document.getElementsByName('source')[0].value.trim();
+
+	if (typeof(execEmbed) == 'undefined')
+		return;
+
+	executeAfterDataCheck(_data, function(){
+		execEmbed(_data);
+		closeWindow();
+	}); 
+}
+
+function executeAfterDataCheck(data, successHandler) {
+	if (data.url || data.code)
+		successHandler();
+	else
+		alert('첨부할 멀티미디어 주소를 바르게 입력해주세요.');
+}
+
+function selectType(id){
+	var textArea = document.getElementsByName('source')[0];
+	var input = document.getElementsByName('url')[0];	
+	if (id == 'codeUrl') {
+		$tx.addClassName($tx('codeSource'), 'text-muted');
+		$tx.removeClassName($tx('codeUrl'), 'text-muted');
+		textArea.value = '';
+		textArea.disabled = true;
+		input.disabled = false;
+		input.focus();
+	}
+	else {
+		$tx.addClassName($tx('codeUrl'), 'text-muted');
+		$tx.removeClassName($tx('codeSource'), 'text-muted');
+		textArea.disabled = false;
+		input.value = '';		
+		input.disabled = true;
+		textArea.focus();
+	}
+	autoResizeHeight($tx('wrapper'));
+}
+//]]>
+</script>

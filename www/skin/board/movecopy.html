@@ -1,0 +1,53 @@
+<div class="container">
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="page-header">
+			<h4>게시물 <?=$act?> <small>※ <?=$act?>할 게시판을 한 개 이상 선택하세요.</small></h4>
+		</div>
+
+		<form name="fboardmvcp" method="post" action="<?=RT_PATH?>/_trans/board_movecopy/update" onsubmit="return fboardmvcp_submit(this);">
+		<input type="hidden" name="sw"       value="<?=$sw?>" />
+		<input type="hidden" name="bo_table" value="<?=$bo_table?>" />
+		<input type="hidden" name="wr_ids"   value='<?=$wr_id?>' />
+			
+		<ul class="list-unstyled">
+			<? foreach ($list as $o): ?>
+			<li>
+				<div class="checkbox">
+		    		<label><input type="checkbox" name="bo_tables[]" value="<?=$o->bo_table?>" />
+		    		<?=$o->gr_subject?> <?=$o->bo_subject?> (<?=$o->bo_table?>)</label>
+		    	</div>
+			</li>   
+		    <? endforeach; ?>
+		</ul>
+
+		<hr/>
+
+		<p class="text-center">
+			<button type="submit" id="btn_submit" class="btn btn-success">확인</button>&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-warning" onclick="window.close();">창닫기</button>
+		</p>
+
+		</form>
+
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+<script type='text/javascript'>
+//<![CDATA[
+function fboardmvcp_submit(f) {
+	if ($("input[name='bo_tables[]']:checked", document.fboardmvcp).length < 1) {
+		alert('게시물을 <?=$act?>할 게시판을 한개 이상 선택해 주십시오.');
+        return false;
+	}
+
+    document.getElementById('btn_submit').disabled = true;
+    
+    return true;
+}
+//]]>
+</script>

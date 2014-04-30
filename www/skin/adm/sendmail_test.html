@@ -1,0 +1,26 @@
+<div class="jumbotron">
+	<h3><?=$title?></h3>
+	<p class="text-muted"><small>
+		입력한 메일주소로 테스트 메일을 발송했을 때
+		<br/>[메일검사] 라는 내용으로 메일이 도착하지 않는다면
+		<br/>보내는 메일 서버와 받는 메일 서버 중 문제가 발생했을 가능성을 의심
+		<br/>메일을 보냈을 때 도착하지 않는다면 다른 여러 메일로 발송하여 테스트
+		<br/>여러 곳으로 메일을 발송하려면 콤마( <strong>,</strong> )로 메일을 구분
+	</small></p>
+
+	<form  class="form-inline" name="fmailtest" method="post" action="<?=ADM_PATH?>/sendmail_test">
+	<input type="hidden" name="token" value="<?=$token?>" />
+
+	<div class="span6">
+		<div class="input-group">
+			<input type="email" name="mail_addr" class="form-control" value="<?=$mail_addr?>" />
+			<span class="input-group-btn"><button type="submit" class="btn btn-primary">보내기</button></span>
+		</div>
+	</div>
+
+	</form>
+
+	<? if ($mail_msg): ?>
+	<pre><?=$mail_msg?></pre>
+	<? endif; ?>
+</div>

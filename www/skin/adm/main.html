@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col-md-6">
+		<h4>계정 정보</h4><hr/>
+		<dl class="dl-horizontal">
+			<dt>서버 운영시스템</dt>
+			<dd><?=PHP_OS?></dd>
+			<dt>서버 운영시스템 버전</dt>
+			<dd><?=$os_version?></dd>
+			<!--
+			<dt>Hostname</dt>
+			<dd><?=trim(`hostname`)?></dd>
+			-->
+			<dt>IP address</dt>
+			<dd><?=$ip_addr?></dd>
+			<dt>계정 DISK 사용량(A)</dt>
+			<dd><?=$account_space?></dd>
+			<dt>데이터 폴더 사용량(D)</dt>
+			<dd><?=$data_space?></dd>
+			<dt>프로그램 사용량(A-D)</dt>
+			<dd><?=$code_space?></dd>
+			<dt>Apache 버전</dt>
+			<dd><?=$apache_version?></dd>
+
+			<!--
+			<dt>Apache 모듈</dt>
+			<dd>- 생략 -</dd>
+			-->
+
+			<dt>PHP 버전</dt>
+			<dd><?=$php_version?></dd>
+			<dt>Zend 버전</dt>
+			<dd><?=$zend_version?></dd>
+			<dt>GD 버전</dt>
+			<dd><?=$gd_version?></dd>
+			<dt>최대 Upload 파일 크기</dt>
+			<dd><?=$max_filesize?></dd>
+			<dt>MySQL 버전</dt>
+			<dd><?=$db_version?></dd>
+
+			<!--		
+			<dt class='db_stat'>MySQL 상태</dt>
+			<dd>
+				<?=$db_date?><br/>
+				<?=$db_status?>
+			</dd>
+			-->
+		</dl>
+	</div>
+	<div class="col-md-6">
+		<h4>RIGHT</h4><hr/>
+	</div>
+</div>

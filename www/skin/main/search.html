@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h4><?=$title?> <small><? if ($list): ?>결과: <strong><?=$total_count?></strong>건<? else: ?>검색된 자료가 없습니다.<? endif; ?></small></h4>
+</div>
+
+<ul id="search_nav" class="nav nav-pills">
+	<li class="disabled"><a href="#">&deg; 검색구분</a></li>
+	<li data-idx="write"><a href="<?=RT_PATH?>/search/qry/page/1/write?stx=<?=$stx?>">게시글</a></li>
+	<li data-idx="comment"><a href="<?=RT_PATH?>/search/qry/page/1/comment?stx=<?=$stx?>">댓글</a></li>
+</ul>
+<br/>
+
+<div>
+	<? foreach ($list as $o): ?>
+	<p>
+		<? if (!$o->is_comment): ?><a href="<?=$o->href?>"><strong><?=$o->subject?></strong></a><? endif; ?>
+		<span class="text-muted"><?=$o->datetime?></span>
+		<a href="<?=$o->href?>" title="새창" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
+	</p>
+	<p><?=$o->content?></p>
+	<hr/>
+	<? endforeach; ?>
+</div>
+
+<div class="text-center">
+	<?=$paging?>
+</div>
+
+
+<script type='text/javascript'>
+//<![CDATA[
+$('#search_nav > li[data-idx="<?=$type?>"]').addClass('active');
+//]]>
+</script>

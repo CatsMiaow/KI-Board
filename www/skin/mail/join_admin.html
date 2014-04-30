@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=<?=$this->config->item('charset')?>"/>
+<title>회원가입 메일</title>
+<style type="text/css">
+body, th, td, form, input, select, textarea, caption { font-size: 12px; font-family:굴림;}
+.line {border: 1px solid #868f98;}
+</style>
+</head>
+
+<body>
+
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+<tr>
+    <td width="25" height="25"></td>
+    <td height="25"></td>
+    <td width="25" height="25"></td>
+</tr>
+<tr>
+    <td width="25" valign="top"></td>
+    <td align="center" class="line">
+        <br/>
+        <table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <table width="500" border="0" cellspacing="0" cellpadding="4">
+                <tr>
+                    <td width="100%" height="25" bgcolor="#f7f1d8">회원가입 메일</td>
+                </tr>
+                </table>
+                <br/>
+
+                <table width="500" border="0" align="center" cellpadding="4" cellspacing="0">
+            	<tr>
+					<td height="150"><b><?=$mb_name?></b> 님께서 회원가입 하셨습니다.
+	                    <br/>회원 아이디 : <b><?=$mb_id?></b>
+	                    <br/>회원 이름 : <?=$mb_name?>
+	                    <br/>회원 별명 : <?=$mb_nick?>
+					</td>
+				</tr>
+                </table>
+                <br/>
+
+                <table width="500" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+                <tr>
+                    <td height="2" bgcolor="#e0e0e0" align="center"></td>
+                </tr>
+                </table>
+            </td>
+        </tr>
+        </table>
+        <br/>
+    </td>
+    <td width="25" valign="top"></td>
+</tr>
+</table>
+
+</body>
+</html>

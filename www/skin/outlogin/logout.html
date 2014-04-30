@@ -1,0 +1,26 @@
+<div>
+	<ul class="list-inline">
+		<li><span class="glyphicon glyphicon-user"></span> <strong><?=$mb_nick?></strong>님</li>
+		<li><a href="<?=RT_PATH?>/member/point" class="text-warning"><span class="glyphicon glyphicon-barcode"></span> <?=$mb_point?>점</a></li>
+		<li><a href="<?=RT_PATH?>/member/login/out" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-off"></span></a></li>
+	</ul>
+	<ul class="list-inline">
+		<li><a href="<?=RT_PATH?>/member/confirm/qry/member.modify" class="text-info"><span class="glyphicon glyphicon-edit"></span> 정보수정</a></li>
+		<li>
+			<a href="javascript:;" title="읽지 않은 쪽지 <?=$mb_memo_cnt?>개" class="text-info" onclick="win_memo();">
+				<span class="glyphicon glyphicon-comment"></span> 쪽지 <span class="badge"><?=$mb_memo_cnt?></span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+
+<? if ($mb_memo_call): ?>
+<script type='text/javascript'>
+//<![CDATA[
+$(function() {
+	alert('새로운 쪽지가 도착하였습니다.');
+});
+//]]>
+</script>
+<? endif; ?>

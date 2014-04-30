@@ -1,0 +1,71 @@
+<div class="container">
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<input type="hidden" id="type" value="<?=$type?>" />
+		<div class="page-header">
+			<h4><?=$title?> <small>분류</small></h4>
+			- 분류 추가/수정/삭제: 분류명 클릭<br/>
+			- 분류 삭제 시 분류에 등록된 게시물은 삭제되지 않습니다.<br/>
+			- 분류 변경 시 바로 적용됩니다.
+		</div>
+
+		<form class="form-inline" onsubmit="return false;">
+			<span class="glyphicon glyphicon-folder-open"></span> 최상위 분류: <input type="text" id="topVal" class="form-control span3" maxlength="20" />
+			<button type="button" id="topSubmit" class="btn btn-primary">등록</button>
+		</form>
+		<br/>
+
+		<span class="glyphicon glyphicon-info-sign"></span> 분류명을 클릭하세요.
+		<div id="category">
+			<?=$code_html?>
+		</div>
+
+		<hr/>
+
+		<p class="text-center">
+		    <button type="button" class="btn btn-lg btn-warning" onclick="post_goto('_board/admin', {'bo_table':'<?=$bo_table?>'}); return false;">목록으로</button>
+		</p>
+	</div><!--/.col-md-10-->
+	<div class="col-md-1"></div>
+</div><!--/.row-->
+
+</div><!--/.container-->
+
+
+<div id="status" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 id="nameVal" class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-inline" onsubmit="return false;">
+				<input type="hidden" id="w" />
+				<input type="hidden" id="codeVal" />
+					<div class="btn-group" data-toggle="buttons">
+						<label id="add" class="btn btn-default" title="추가">
+							<input type="radio" name="options"> <span class="glyphicon glyphicon-plus"></span>
+						</label>
+						<label id="mod" class="btn btn-default" title="수정">
+							<input type="radio" name="options"> <span class="glyphicon glyphicon-edit"></span>
+						</label>
+						<label id="del" class="btn btn-danger" title="삭제">
+							<input type="radio" name="options"> <span class="glyphicon glyphicon-minus"></span>
+						</label>
+					</div>
+
+					<input type="text" id="subVal" class="form-control span4" maxlength="20" />
+					<button type="button" id="valSubmit" class="btn btn-primary">확인</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type='text/javascript' src='<?=JS_DIR?>/categoryform.js'></script>

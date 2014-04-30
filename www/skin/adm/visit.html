@@ -1,0 +1,56 @@
+<form class="form-inline" name="fvisit" method="get" action="<?=ADM_PATH?>/visit/lists">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+				<input type="text" name="from" class="form-control span3" maxlength="10" readonly="readonly" value="<?=$fr_date?>" />
+			</div>
+		</div>
+		<div class="col-md-1 text-center">
+			<button type="button" class="btn btn-default disabled">∼</button>
+		</div>
+		<div class="col-md-3">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+				<input type="text" name="to" class="form-control span3" maxlength="10" readonly="readonly" value="<?=$to_date?>" />
+			</div>
+		</div>
+		<div class="col-md-1">
+			<button type="Submit" class="btn btn-primary">검색</button>
+		</div>
+	</div>
+</form>
+<br/>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th>IP</th>
+			<th>AGENT</th>
+			<th>일시</th>
+		</tr>
+	</thead>
+	<tbody>
+		<? foreach ($list as $o): ?>
+		<tr>
+			<td><?=$o->vi_ip?></td>
+			<td>
+				&gt; <a href="<?=$o->vi_referer?>" title="<?=$o->vi_referer?>" target="_blank"><?=$o->path?></a>
+				<br/><?=$o->vi_agent?>
+			</td>
+			<td><?=$o->vi_date?><br/><?=$o->vi_time?></td>
+		</tr>
+		<? endforeach; ?>
+	</tbody>
+</table>
+
+<div class="text-right">
+	<?=$paging?>
+</div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/datepicker.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$('input', document.fvisit).datepicker();
+//]]>
+</script>

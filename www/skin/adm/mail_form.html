@@ -1,0 +1,57 @@
+<form id="fmail" class="form-horizontal" name="fmail" method="post" action="<?=ADM_PATH?>/mail/form">
+<input type="hidden" name="w"     value="<?=$w?>" />
+<input type="hidden" name="ma_id" value="<?=$ma_id?>" />
+<input type="hidden" name="token" value="<?=$token?>" />
+
+<?=validation_errors('<pre>','</pre>')?>
+<fieldset>
+	<legend>&deg; <strong><?=$title?></legend>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="ma_subject">제목</label>
+		<div class="col-md-9">
+			<input type="text" id="ma_subject" name="ma_subject" class="form-control span4" value="<?=$subject?>"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="ma_content">내용</label>
+		<div class="col-md-9">
+			<p class="btn-group">
+				<button type="button" class="btn btn-sm btn-default" onclick="txresize('ma_content', '1', 150);"><span class="glyphicon glyphicon-arrow-up"></span></button>
+				<button type="button" class="btn btn-sm btn-default" onclick="txresize('ma_content', '2', 300);"><span class="glyphicon glyphicon-minus"></span></button>
+				<button type="button" class="btn btn-sm btn-default" onclick="txresize('ma_content', '3', 150);"><span class="glyphicon glyphicon-arrow-down"></span></button>
+			</p>
+			<textarea id="ma_content" name="ma_content" class="form-control" rows="15"><?=$content?></textarea>
+			<span class="help-block">
+				<br/>[이름] , [별명] , [회원아이디] , [이메일] , [생일]
+	        	<br/>위와 같이 HTML 코드에 삽입하면 해당 내용에 맞게 변환하여 메일 발송합니다.
+			</span>
+		</div>
+	</div>
+
+	<hr />
+	
+	<p class="text-center">
+		<button type="submit" class="btn btn-lg btn-success">확인</button>
+	</p>
+</fieldset>
+
+</form>
+
+
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/validate.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(function() {
+	$('#fmail').validate({
+		rules: {
+			ma_subject: 'required',
+			ma_content: 'required'
+		},
+		messages: {
+			ma_subject: '제목을 입력하세요.',
+			ma_content: '내용을 입력하세요.'
+		}
+	});
+});
+//]]>
+</script>

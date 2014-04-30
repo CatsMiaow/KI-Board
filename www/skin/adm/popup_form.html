@@ -1,0 +1,170 @@
+<form id="fpopup" class="form-horizontal" name="fpopup" method="post" action="<?=ADM_PATH?>/popup/form" enctype="multipart/form-data">
+<input type="hidden" name="w"    value="<?=$w?>" />
+<input type="hidden" name="token" value="<?=$token?>" />
+<input type="hidden" name="pu_id" value="<?=$id?>" />
+
+<?=validation_errors('<pre>','</pre>')?>
+<fieldset>
+	<legend>&deg; <strong><?=$title?></legend>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_name">팝업 제목</label>
+		<div class="col-md-4">
+			<input type="text" id="pu_name" name="pu_name" class="form-control" maxlength="20" value="<?=$name?>" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_file">팝업 파일</label>
+		<div class="col-md-4">
+			<input type="text" id="pu_file" name="pu_file" class="form-control" maxlength="20" value="<?=$file?>" />
+		</div>
+		<div class="col-md-5">
+			skin/popup/%.html
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_use">팝업 사용</label>
+		<div class="col-md-9">
+			<label class="checkbox-inline">
+				<input type="checkbox" id="pu_use" name="pu_use" value="1" <?=$use_chk?>/> 사용
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label">팝업 형식</label>
+		<div class="col-md-9">
+			<label class="radio-inline">
+				<input type="radio" name="pu_type" value="0" /> 일반팝업
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="pu_type" value="1" /> 고정레이어
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="sdate">시작일</label>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="input-group">
+		  				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+						<input type="text" id="sdate" name="sdate" class="form-control" maxlength="10" readonly="readonly" value="<?=$sdate?>" />
+					</div>
+				</div>
+				<div class="col-md-7">
+					<input type="text" name="stime_h" class="form-control span1 text-right" maxlength="2" value="<?=$stime_h?>" />시
+					<input type="text" name="stime_i" class="form-control span1 text-right" maxlength="2" value="<?=$stime_i?>" />분
+					<input type="text" name="stime_s" class="form-control span1 text-right" maxlength="2" value="<?=$stime_s?>" />초
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="edate">종료일</label>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="input-group">
+		  				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+						<input type="text" id="edate" name="edate" class="form-control" maxlength="10" readonly="readonly" value="<?=$edate?>" />
+					</div>
+				</div>
+				<div class="col-md-7">
+					<input type="text" name="etime_h" class="form-control span1 text-right" maxlength="2" value="<?=$etime_h?>" />시
+					<input type="text" name="etime_i" class="form-control span1 text-right" maxlength="2" value="<?=$etime_i?>" />분
+					<input type="text" name="etime_s" class="form-control span1 text-right" maxlength="2" value="<?=$etime_s?>" />초
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_width">가로 크기</label>
+		<div class="col-md-2">
+			<input type="text" id="pu_width" name="pu_width" class="form-control text-right" maxlength="5" value="<?=$width?>" />
+		</div>
+		<div class="col-md-7">px</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_height">세로 크기</label>
+		<div class="col-md-2">
+			<input type="text" id="pu_height" name="pu_height" class="form-control text-right" maxlength="5" value="<?=$height?>" />
+		</div>
+		<div class="col-md-7">px</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_x">X 위치</label>
+		<div class="col-md-2">
+			<input type="text" id="pu_x" name="pu_x" class="form-control text-right" maxlength="5" value="<?=$x?>" />
+		</div>
+		<div class="col-md-7">px</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-3 control-label" for="pu_y">Y 위치</label>
+		<div class="col-md-2">
+			<input type="text" id="pu_y" name="pu_y" class="form-control text-right" maxlength="5" value="<?=$y?>" />
+		</div>
+		<div class="col-md-7">px</div>
+	</div>
+	
+	<hr />
+	
+	<p class="text-center">
+		<button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/popup/lists';">목록</button>
+	</p>
+</fieldset>
+</form>
+
+
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/validate.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/validate_ext.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jquery/datepicker.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+document.fpopup.pu_type[<?=$type?>].checked = true;
+
+$(function() {
+	$('#sdate,#edate').datepicker();
+
+	$('#fpopup').validate({
+		rules: {
+			pu_name: 'required',
+			pu_file: { required:true, alphanumunder:true },
+
+			sdate: 'required',
+			stime_h: { required:true, min:0, max:23 },
+			stime_i: { required:true, min:0, max:59 },
+			stime_s: { required:true, min:0, max:59 },
+
+			edate: 'required',
+			etime_h: { required:true, min:0, max:23 },
+			etime_i: { required:true, min:0, max:59 },
+			etime_s: { required:true, min:0, max:59 },
+			
+			pu_width: { required:true, min:100 },
+			pu_height: { required:true, min:100 },
+			pu_x: { required:true, min:0 },
+			pu_y: { required:true, min:0 }
+		},
+		messages: {
+			pu_name: '팝업 제목을 입력하세요.',
+			pu_file: { required:'팝업 파일을 입력하세요.' },
+
+			sdate: '시작일을 입력하세요.',
+			stime_h: '시작일의 시를 23 이하로 입력하세요.',
+			stime_i: '시작일의 분을 59 이하로 입력하세요.',
+			stime_s: '시작일의 초가 59 이하로 입력하세요.',
+
+			edate: '종료일을 입력하세요.',
+			etime_h: '종료일의 시가 23 이하로 입력하세요.',
+			etime_i: '종료일의 분이 59 이하로 입력하세요.',
+			etime_s: '종료일의 초가 59 이하로 입력하세요.',
+
+			pu_width: '100 이상 입력하세요.',
+			pu_height: '100 이상 입력하세요.',
+			pu_x: '숫자가 아닙니다.',
+			pu_y: '숫자가 아닙니다.'
+		}
+	});
+});
+//]]>
+</script>

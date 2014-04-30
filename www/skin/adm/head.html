@@ -1,0 +1,39 @@
+<div class="container">
+	<div>
+		<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="<?=ADM_PATH?>">Home</a></li>
+			<li><a href="<?=RT_PATH?>/" target="_blank">Site</a></li>
+			<li><a href="<?=RT_PATH?>/member/login/out">Logout</a></li>
+		</ul>
+		<h3 class="text-muted">관리자화면( Administrator )</h3>
+	</div>
+	<hr/>
+	<div class="row">
+		<div class="col-md-3">
+			<div id="navList" class="list-group">
+				<a class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> 회원</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/member/lists/">　<span class="glyphicon glyphicon-link"></span> 회원관리</a>
+				<? if ($use_point): ?>
+				<a class="list-group-item" href="<?=ADM_PATH?>/point/lists/">　<span class="glyphicon glyphicon-link"></span> 포인트관리</a>
+				<? endif; ?>
+				<a class="list-group-item" href="<?=ADM_PATH?>/mail/lists/">　<span class="glyphicon glyphicon-link"></span> 회원메일발송</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/sendmail_test/">　<span class="glyphicon glyphicon-link"></span> 메일테스트</a>
+
+				<a class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> 게시판</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/board/lists/">　<span class="glyphicon glyphicon-link"></span> 게시판관리</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/boardgroup/lists/">　<span class="glyphicon glyphicon-link"></span> 게시판그룹관리</a>
+
+				<a class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> 기타</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/config/">　<span class="glyphicon glyphicon-link"></span> 환경설정</a>
+				<? if ($use_popup): ?>
+				<a class="list-group-item" href="<?=ADM_PATH?>/popup/lists/">　<span class="glyphicon glyphicon-link"></span> 팝업관리</a>
+				<? endif; ?>
+				<a class="list-group-item" href="<?=ADM_PATH?>/repair/">　<span class="glyphicon glyphicon-link"></span> 복구/최적화</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/visit/lists/">　<span class="glyphicon glyphicon-link"></span> 방문자분석</a>
+				<a class="list-group-item" href="<?=ADM_PATH?>/phpinfo/" target="_blank">　<span class="glyphicon glyphicon-link"></span> phpinfo</a>
+			</div>
+		</div>
+    	<div class="col-md-9">
+
+
+    		
