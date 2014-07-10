@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/* CI 2.1.4
+/* CI 2.2.0
 2차 폴더 접근까지 가능하도록 수정
 */
 class MY_Router extends CI_Router {

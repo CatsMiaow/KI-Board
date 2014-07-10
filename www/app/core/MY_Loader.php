@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/* CI 2.1.4
+/* CI 2.2.0
 SKIN 폴더 경로 변경( _ci_view_paths )
 SKIN 기본 확장자 변경( .php -> .html )
 */

@@ -5,6 +5,7 @@ class Make extends CI_Controller {
 		$this->load->library('encrypt');
 	}
 
+	// 초기 관리자 생성
     function index() {
 		if ($this->db->count_all_results('ki_member') > 0)
 			alert('이미 회원이 존재합니다.');
@@ -41,7 +42,32 @@ class Make extends CI_Controller {
 			'mb_memo_call'	   => '',
 			'mb_memo_cnt'	   => 0
 		));
+
+		goto_url('/');
+	}
+
+	// 2.2.0에서 Mcrypt를 사용하지 않는 암호 재가공
+	function password() {
+		$this->db->select('mb_id, mb_password');
+		$result = $this->db->get_where('ki_member', array(
+			'mb_level >=' => 2
+		))->result_array();
+
+		$key = md5($this->config->item('encryption_key'));
+
+		$data = array();
+		foreach ($result as $row) {
+			$password = $this->encrypt->_xor_decode(base64_decode($row['mb_password']), $key);
+			if (strlen($password) != 32) exit('구 버전 암호가 아닐 수 있습니다.');
+
+			$data[] = array(
+				'mb_id' => $row['mb_id'],
+				'mb_password' => $this->encrypt->encode($password)
+			);
+		}
+
+		$this->db->update_batch('ki_member', $data, 'mb_id');
+
 		goto_url('/');
 	}
 }
-?>

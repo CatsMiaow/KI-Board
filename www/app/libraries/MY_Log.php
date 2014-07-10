@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/* CI 2.1.4
+/* CI 2.2.0
 로그 메시지에 PHP_SELF 추가
 */
 class MY_Log extends CI_Log {

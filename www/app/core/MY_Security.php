@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/* CI 2.1.4
+/* CI 2.2.0
 게시판 Editor에서 style="anything" 문제로 wr_content에서 style 점검 삭제
 */
 class MY_Security extends CI_Security {
