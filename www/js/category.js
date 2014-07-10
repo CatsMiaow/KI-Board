@@ -12,7 +12,7 @@ if (typeof(CATEGORY_JS) == 'undefined') {
             code = (vals[i].indexOf('-') !== -1) ? vals[i].split('-') : vals[i].split('.');
             num = i + 1;
                         
-            $('#'+obj+num+' > option[value='+code[0]+']').prop('selected', true).change();
+            $('#'+obj+num+' > option[value="'+code[0]+'"]').prop('selected', true).change();
     		if (typeof code[1] != 'undefined') {
     			tcode = code[0] + '-';
     			scode = code[1].match(/[0-9]{3}/g);
