@@ -4,12 +4,12 @@
 * 게시판 샘플 사이트 <http://board.tested.co.kr/board/test>
  * 관리자 정보 test / test <http://board.tested.co.kr/adm>
 * Codeigniter 한국사용자포럼 <http://codeigniter-kr.org>
-* [변경 내역](CHANGELOG.md) / [설치 방법](INSTALL.md)
+* [이전 변경내역](CHANGELOG.md) / [설치 방법](INSTALL.md)
 
 
 ## 머리말
 
-PHP Framework Codeigniter(v2.1.4)와 UI Framework Bootstrap(v3.1.0)을 기반으로 제작된 게시판 소스입니다.  
+PHP Framework Codeigniter와 UI Framework Bootstrap을 기반으로 제작된 게시판 소스입니다.  
 그누보드 구조를 참고하였으며, [샘플 사이트](http://board.tested.co.kr/board/test) 그대로의 모습입니다.  
 Codeigniter 관련 내용은 한국사용자포럼의 [한글매뉴얼](http://codeigniter-kr.org/user_guide_2.1.0)을 참고하시기 바랍니다.
 
@@ -31,10 +31,10 @@ __이 게시판을 사용하여 발생하는 피해에 대해서 1원도 책임�
 
 #### 직접 수정
 
-system/core/URI.php - 154 line
+system/core/URI.php - 180 line
 
     // 원본
-    if ( ! isset($_SERVER['REQUEST_URI']))
+    if ( ! isset($_SERVER['REQUEST_URI']) OR ! isset($_SERVER['SCRIPT_NAME']))
  
     // 수정
     if ( ! isset($_SERVER['REQUEST_URI']) OR empty($_SERVER['SCRIPT_NAME']))
