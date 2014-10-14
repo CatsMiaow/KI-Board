@@ -1,28 +1,28 @@
 <div class="row">
-	<div class="col-md-6">
-		<h4>최근 게시물</h4>
-		<hr/>
-		<ul class="list-unstyled">
-			<? foreach ($write as $o): ?>
-			<li><span class="glyphicon glyphicon-ok-sign"></span> <a href='<?=$o->href?>'><?=$o->subject?></a> <span class="text-muted"><?=$o->comt_cnt?></span></li>
-			<? endforeach; ?>
-		</ul>
-	</div>
-	<div class="col-md-6">
-		<h4>최근 댓글</h4>
-		<hr/>
-		<ul class="list-unstyled">
-			<? foreach ($comment as $o): ?>
-			<li><span class="glyphicon glyphicon-ok-circle"></span> <a href='<?=$o->href?>'><?=$o->content?></a></li>
-			<? endforeach; ?>
-		</ul>
-	</div>
+    <div class="col-md-6">
+        <h4>최근 게시물</h4>
+        <hr/>
+        <ul class="list-unstyled">
+            <? foreach ($write as $o): ?>
+            <li><span class="glyphicon glyphicon-ok-sign"></span> <a href='<?=$o->href?>'><?=$o->subject?></a> <span class="text-muted"><?=$o->comt_cnt?></span></li>
+            <? endforeach; ?>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h4>최근 댓글</h4>
+        <hr/>
+        <ul class="list-unstyled">
+            <? foreach ($comment as $o): ?>
+            <li><span class="glyphicon glyphicon-ok-circle"></span> <a href='<?=$o->href?>'><?=$o->content?></a></li>
+            <? endforeach; ?>
+        </ul>
+    </div>
 </div>
 
 
 <!--// 일반팝업 -->
 <? foreach ($pubasic as $o): ?>
-	<?=$o?>
+    <?=$o?>
 <? endforeach; ?>
 
 <!--// 레이어팝업 -->
@@ -30,9 +30,9 @@
 <script type='text/javascript'>
 //<![CDATA[
 $(function() {
-	<? foreach ($pulayer as $o): ?>
-	var popup<?=$o->id?> = <?=$o->html?>
-	<? endforeach; ?>
+    <? foreach ($pulayer as $o): ?>
+    var popup<?=$o->id?> = <?=$o->html?>
+    <? endforeach; ?>
 });
 //]]>
 </script>

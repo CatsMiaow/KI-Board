@@ -1,10 +1,10 @@
 <?php
 class Category_model extends CI_Model {
-	function __construct() {
-		parent::__construct();
-	}
+    function __construct() {
+        parent::__construct();
+    }
 
-	function get_category($type, $select=FALSE) {
+    function get_category($type, $select=FALSE) {
         if (!$type) return FALSE;
         
         if (!$select)

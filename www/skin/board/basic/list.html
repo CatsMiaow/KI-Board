@@ -1,11 +1,11 @@
 <div class="page-header clearfix">
-	<p class="pull-left">
-	<? if ($category): ?>
+    <p class="pull-left">
+    <? if ($category): ?>
         <span><?=$category['select']?></span>
         <?=$category['scate']?>
     <? endif; ?>
-	</p>
-	<p class="pull-right">
+    </p>
+    <p class="pull-right">
         <span class="glyphicon glyphicon-list-alt"></span>
         <span class="text-muted"><strong>Total <?=$total_count?></strong></span>
         <?=$btn_rss?> <?=$btn_admin?>
@@ -18,61 +18,61 @@
 <input type="hidden" name="sw" value="" />
 
 <table class="table table-condensed table-hover">
-	<thead>
-		<tr>
-			<th class="text-center">번호</th>
-			<? if ($btn_chkbox): ?>
-			<th class="text-center"><input type="checkbox" id="allcheck" /></th>
-			<? endif; ?>
-			<th>제목</th>
-			<th>글쓴이</th>
-			<th class="text-center"><a href="<?=$sort_datetime?>">날짜</a></th>
-			<th class="text-center"><a href="<?=$sort_hit?>">조회</a></th> 
-		</tr>
-	</thead>
-	<tbody>
-		<? foreach ($list_nt as $o): ?>
-		<tr class="success">
-			<td class="text-center"><span class="glyphicon glyphicon-exclamation-sign text-danger"></span></td>
-			<? if ($btn_chkbox): ?>
-			<td>&nbsp;</td>
-			<? endif; ?>
-		    <td><a href="<?=$o->href?>"><strong><?=$o->subject?></strong></a></td>
-		    <td><?=$o->name?></td>
-		    <td class="text-center"><?=$o->datetime2?></td>
-		    <td class="text-center"><?=$o->wr_hit?></td>
-		</tr>
-		<? endforeach; ?>
+    <thead>
+        <tr>
+            <th class="text-center">번호</th>
+            <? if ($btn_chkbox): ?>
+            <th class="text-center"><input type="checkbox" id="allcheck" /></th>
+            <? endif; ?>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th class="text-center"><a href="<?=$sort_datetime?>">날짜</a></th>
+            <th class="text-center"><a href="<?=$sort_hit?>">조회</a></th> 
+        </tr>
+    </thead>
+    <tbody>
+        <? foreach ($list_nt as $o): ?>
+        <tr class="success">
+            <td class="text-center"><span class="glyphicon glyphicon-exclamation-sign text-danger"></span></td>
+            <? if ($btn_chkbox): ?>
+            <td>&nbsp;</td>
+            <? endif; ?>
+            <td><a href="<?=$o->href?>"><strong><?=$o->subject?></strong></a></td>
+            <td><?=$o->name?></td>
+            <td class="text-center"><?=$o->datetime2?></td>
+            <td class="text-center"><?=$o->wr_hit?></td>
+        </tr>
+        <? endforeach; ?>
 
-		<? foreach ($list as $o): ?>
-		<tr>
-		    <td class="text-center">
-				<?=($wr_id == $o->wr_id) ? '<span class="text-danger"><strong>'.$o->num.'</strong></span>' : $o->num?>
-		    </td>
-			<? if ($btn_chkbox): ?>
-			<td class="text-center"><input type="checkbox" name="wr_id[]" value="<?=$o->wr_id?>" /></td>
-			<? endif; ?>
-		    <td>
-		        <?=$o->ico_reply?>
-				<a href="<?=$o->href?>"><?=$o->subject?></a>
-				<? if ($o->comment_cnt): ?><span class="text-muted"><small><?=$o->comment_cnt?></small></span><? endif; ?>
-				
-				<?=$o->ico_secret.' '.$o->ico_image.' '.$o->ico_movie.' '.$o->ico_file.' '.$o->ico_new.' '.$o->ico_hot?>
-		    </td>
-		    <td><?=$o->name?></td>
-		    <td class="text-center"><?=$o->datetime2?></td>
-		    <td class="text-center"><?=$o->wr_hit?></td>
-		</tr>
-		<? endforeach; ?>
-	</tbody>
+        <? foreach ($list as $o): ?>
+        <tr>
+            <td class="text-center">
+                <?=($wr_id == $o->wr_id) ? '<span class="text-danger"><strong>'.$o->num.'</strong></span>' : $o->num?>
+            </td>
+            <? if ($btn_chkbox): ?>
+            <td class="text-center"><input type="checkbox" name="wr_id[]" value="<?=$o->wr_id?>" /></td>
+            <? endif; ?>
+            <td>
+                <?=$o->ico_reply?>
+                <a href="<?=$o->href?>"><?=$o->subject?></a>
+                <? if ($o->comment_cnt): ?><span class="text-muted"><small><?=$o->comment_cnt?></small></span><? endif; ?>
+                
+                <?=$o->ico_secret.' '.$o->ico_image.' '.$o->ico_movie.' '.$o->ico_file.' '.$o->ico_new.' '.$o->ico_hot?>
+            </td>
+            <td><?=$o->name?></td>
+            <td class="text-center"><?=$o->datetime2?></td>
+            <td class="text-center"><?=$o->wr_hit?></td>
+        </tr>
+        <? endforeach; ?>
+    </tbody>
 </table>
 <? if (!$list): ?><p class="lead text-center text-muted">게시물이 없습니다.</p><? endif; ?>
 
 <div class="clearfix">
-	<span class="btn-group"><?=$btn_list?><?=$btn_chkbox?></span>
-	<div class="pull-right">
-		<?=$btn_write?>
-	</div>
+    <span class="btn-group"><?=$btn_list?><?=$btn_chkbox?></span>
+    <div class="pull-right">
+        <?=$btn_write?>
+    </div>
 </div>
 
 </form>
@@ -82,27 +82,27 @@
 <form name="fsearch" method="get" action="<?=RT_PATH?>/board/<?=BO_TABLE?>/lists" onsubmit="return doSearch(this);">
 <input type="hidden" name="sca" value="<?=$sca?>" />
 
-	<div class="clearfix">
-		<select name="sfl" class="form-control input-sm auto pull-left">
-		    <option value="wr_subject">제목</option>
-		    <option value="wr_content">내용</option>
-		    <option value="wr_subject.wr_content">제목+내용</option>
-		    <option value="mb_id">회원아이디</option>
-		    <option value="wr_name">글쓴이</option>
-		</select>
-		<div class="span4 pull-left">
-			<div class="input-group">
-				<input name="stx" class="form-control input-sm" maxlength="15" value="<?=$stx?>" />
-				<span class="input-group-btn">
-					<button type="submit" class="btn btn-sm btn-primary">검색</button>
-				</span>
-			</div>
-		</div>
+    <div class="clearfix">
+        <select name="sfl" class="form-control input-sm auto pull-left">
+            <option value="wr_subject">제목</option>
+            <option value="wr_content">내용</option>
+            <option value="wr_subject.wr_content">제목+내용</option>
+            <option value="mb_id">회원아이디</option>
+            <option value="wr_name">글쓴이</option>
+        </select>
+        <div class="span4 pull-left">
+            <div class="input-group">
+                <input name="stx" class="form-control input-sm" maxlength="15" value="<?=$stx?>" />
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm btn-primary">검색</button>
+                </span>
+            </div>
+        </div>
 
-		<div class="pull-right">
-			<?=$paging?>
-		</div>
-	</div>
+        <div class="pull-right">
+            <?=$paging?>
+        </div>
+    </div>
 </form>
 
 

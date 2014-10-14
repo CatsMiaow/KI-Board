@@ -1,5 +1,5 @@
 <div class="page-header">
-	&deg; 전체회원수 : <?=$total_cnt?>명 / 탈퇴회원수 : <?=$leave_cnt?>명 / <strong>정상회원수 : <?=$member_cnt?>명</strong>
+    &deg; 전체회원수 : <?=$total_cnt?>명 / 탈퇴회원수 : <?=$leave_cnt?>명 / <strong>정상회원수 : <?=$member_cnt?>명</strong>
 </div>
 
 <form id="fmailselect" class="form-horizontal" name="fmailselect" method="post" action="<?=ADM_PATH?>/mail/select_lists">
@@ -7,90 +7,90 @@
 <input type="hidden" name="token" value="<?=$token?>"/>
 
 <fieldset>
-	<legend>&deg; <strong>대상 회원 검색</legend>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="mb_birth_from">생일</label>
-		<div class="col-md-3">
-			<div class="input-group">
-				<input type="text" id="mb_birth_from" name="mb_birth_from" class="form-control text-right" maxlength="4" value="<?=$mb_birth_from?>" />
-				<span class="input-group-addon">부터</span>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="input-group">
-				<input type="text" name="mb_birth_to" class="form-control text-right" maxlength="4" value="<?=$mb_birth_to?>" />
-				<span class="input-group-addon">까지</span>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<strong>0404</strong>부터 <strong>0404</strong>까지
-			<br/><strong>0101</strong>부터 <strong>1231</strong>까지
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="mb_email">이메일</label>
-		<div class="col-md-4">
-			<div class="input-group">
-  				<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-				<input type="text" id="mb_email" name="mb_email" class="form-control" value="<?=$mb_email?>" />
-			</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="mb_area">지역</label>
-		<div class="col-md-2">
-			<select id="mb_area" name="mb_area" class="form-control">
-	            <option value="">전체</option>
-	            <option value="서울">서울</option>
-	            <option value="부산">부산</option>
-	            <option value="대구">대구</option>
-	            <option value="인천">인천</option>
-	            <option value="광주">광주</option>
-	            <option value="대전">대전</option>
-	            <option value="울산">울산</option>
-	            <option value="강원">강원</option>
-	            <option value="경기">경기</option>
-	            <option value="경남">경남</option>
-	            <option value="경북">경북</option>
-	            <option value="전남">전남</option>
-	            <option value="전북">전북</option>
-	            <option value="제주">제주</option>
-	            <option value="충남">충남</option>
-	            <option value="충북">충북</option>
-	        </select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="mb_mailling">메일링</label>
-		<div class="col-md-4">
-			<select id="mb_mailling" name="mb_mailling" class="form-control">
-	            <option value="1">수신동의한 회원만</option>
-	            <option value="">전체</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="mb_level_form">권한</label>
-		<div class="col-md-3">
-			<div class="input-group">
-				<?=$mb_level_from?>
-				<span class="input-group-addon">에서</span>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="input-group">
-				<?=$mb_level_to?>
-				<span class="input-group-addon">까지</span>
-			</div>
-		</div>
-	</div>
+    <legend>&deg; <strong>대상 회원 검색</legend>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="mb_birth_from">생일</label>
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" id="mb_birth_from" name="mb_birth_from" class="form-control text-right" maxlength="4" value="<?=$mb_birth_from?>" />
+                <span class="input-group-addon">부터</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" name="mb_birth_to" class="form-control text-right" maxlength="4" value="<?=$mb_birth_to?>" />
+                <span class="input-group-addon">까지</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <strong>0404</strong>부터 <strong>0404</strong>까지
+            <br/><strong>0101</strong>부터 <strong>1231</strong>까지
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="mb_email">이메일</label>
+        <div class="col-md-4">
+            <div class="input-group">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                <input type="text" id="mb_email" name="mb_email" class="form-control" value="<?=$mb_email?>" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="mb_area">지역</label>
+        <div class="col-md-2">
+            <select id="mb_area" name="mb_area" class="form-control">
+                <option value="">전체</option>
+                <option value="서울">서울</option>
+                <option value="부산">부산</option>
+                <option value="대구">대구</option>
+                <option value="인천">인천</option>
+                <option value="광주">광주</option>
+                <option value="대전">대전</option>
+                <option value="울산">울산</option>
+                <option value="강원">강원</option>
+                <option value="경기">경기</option>
+                <option value="경남">경남</option>
+                <option value="경북">경북</option>
+                <option value="전남">전남</option>
+                <option value="전북">전북</option>
+                <option value="제주">제주</option>
+                <option value="충남">충남</option>
+                <option value="충북">충북</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="mb_mailling">메일링</label>
+        <div class="col-md-4">
+            <select id="mb_mailling" name="mb_mailling" class="form-control">
+                <option value="1">수신동의한 회원만</option>
+                <option value="">전체</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="mb_level_form">권한</label>
+        <div class="col-md-3">
+            <div class="input-group">
+                <?=$mb_level_from?>
+                <span class="input-group-addon">에서</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <?=$mb_level_to?>
+                <span class="input-group-addon">까지</span>
+            </div>
+        </div>
+    </div>
 
-	<hr/>
-	
-	<p class="text-center">
-		<button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/mail/lists';">목록</button>
-	</p>
+    <hr/>
+    
+    <p class="text-center">
+        <button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/mail/lists';">목록</button>
+    </p>
 </fieldset>
 
 </form>
@@ -100,19 +100,19 @@
 <script type='text/javascript'>
 //<![CDATA[
 $(function() {
-	document.fmailselect.mb_area.value = '<?=$mb_area?>';
-	document.fmailselect.mb_mailling.value = '<?=$mb_mailling?>';
+    document.fmailselect.mb_area.value = '<?=$mb_area?>';
+    document.fmailselect.mb_mailling.value = '<?=$mb_mailling?>';
 
-	$('#fmailselect').validate({
-		rules: {
-			mb_birth_from: { number:true, minlength:4 },
-			mb_birth_to: { number:true, minlength:4 }
-		},
-		messages: {
-			mb_birth_from: { number:'숫자가 아닙니다.', minlength:'올바른 형식이 아닙니다.' },
-			mb_birth_to: { number:'숫자가 아닙니다.', minlength:'올바른 형식이 아닙니다.' }
-		}
-	});
+    $('#fmailselect').validate({
+        rules: {
+            mb_birth_from: { number:true, minlength:4 },
+            mb_birth_to: { number:true, minlength:4 }
+        },
+        messages: {
+            mb_birth_from: { number:'숫자가 아닙니다.', minlength:'올바른 형식이 아닙니다.' },
+            mb_birth_to: { number:'숫자가 아닙니다.', minlength:'올바른 형식이 아닙니다.' }
+        }
+    });
 });
 //]]>
 </script>

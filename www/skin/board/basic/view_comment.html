@@ -1,31 +1,31 @@
 <? if ($list): ?>
 <ul class="list-unstyled">
-	<? foreach ($list as $o): ?>
-	<li>
-		<a name="c_<?=$o->comment_id?>"></a>
+    <? foreach ($list as $o): ?>
+    <li>
+        <a name="c_<?=$o->comment_id?>"></a>
         <div style="margin-left:<?=$o->co_reply_len?>px;">
-			<div class="panel panel-warning">
-				<div class="panel-heading">
-					<? if ($o->co_reply_len): ?>
-					<span class="glyphicon glyphicon-expand text-danger" title="답변 댓글"></span>
-					<? endif; ?>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <? if ($o->co_reply_len): ?>
+                    <span class="glyphicon glyphicon-expand text-danger" title="답변 댓글"></span>
+                    <? endif; ?>
 
-					<?=$o->name?>&nbsp;<?=$o->ip?>
-	    			<span class="pull-right">
-	    				<?=$o->btn_reply?> <?=$o->btn_edit?> <?=$o->btn_del?> <?=$o->datetime?>
-	    			</span>
-				</div>
-				<div class="panel-body"><?=$o->content?></div>
-			</div>
+                    <?=$o->name?>&nbsp;<?=$o->ip?>
+                    <span class="pull-right">
+                        <?=$o->btn_reply?> <?=$o->btn_edit?> <?=$o->btn_del?> <?=$o->datetime?>
+                    </span>
+                </div>
+                <div class="panel-body"><?=$o->content?></div>
+            </div>
 
-    		<span id="edit_<?=$o->comment_id?>" style="display:none;"></span>
-    		<span id="reply_<?=$o->comment_id?>" style="display:none;"></span>
+            <span id="edit_<?=$o->comment_id?>" style="display:none;"></span>
+            <span id="reply_<?=$o->comment_id?>" style="display:none;"></span>
 
-			<input type="hidden" id="secret_comment_<?=$o->comment_id?>" value="<?=$o->secret?>" />
-			<textarea id="save_comment_<?=$o->comment_id?>" class="hide" rows="0" cols="0"><?=$o->content_s?></textarea>
-		</div>
-	</li>
-	<? endforeach; ?>
+            <input type="hidden" id="secret_comment_<?=$o->comment_id?>" value="<?=$o->secret?>" />
+            <textarea id="save_comment_<?=$o->comment_id?>" class="hide" rows="0" cols="0"><?=$o->content_s?></textarea>
+        </div>
+    </li>
+    <? endforeach; ?>
 </ul>
 
 <div class="text-center"><?=$paging?></div>
@@ -35,91 +35,91 @@
 <!-- 코멘트 입력-->
 <? if ($is_comment_write): ?>
 <div id="comment_box" style="display:none;">
-	<div id="comment_reply"><span class="glyphicon glyphicon-expand text-danger" title="답변 댓글"></span></div>
-	<div>
-		<form name="fviewcomment" method="post"	action="<?=RT_PATH?>/_trans/board_comment/update" onsubmit="return fviewcomment_submit(this);">
-		<input type="hidden" name="w"		   value="c" />
-		<input type="hidden" name="bo_table"   value="<?=$bo_table?>" />
-		<input type="hidden" name="wr_id"	   value="<?=$wr_id?>" />
-		<input type="hidden" name="qstr"	   value="<?=$qstr?>" />
-		<input type="hidden" name="comment_id" value="" />
+    <div id="comment_reply"><span class="glyphicon glyphicon-expand text-danger" title="답변 댓글"></span></div>
+    <div>
+        <form name="fviewcomment" method="post"    action="<?=RT_PATH?>/_trans/board_comment/update" onsubmit="return fviewcomment_submit(this);">
+        <input type="hidden" name="w"           value="c" />
+        <input type="hidden" name="bo_table"   value="<?=$bo_table?>" />
+        <input type="hidden" name="wr_id"       value="<?=$wr_id?>" />
+        <input type="hidden" name="qstr"       value="<?=$qstr?>" />
+        <input type="hidden" name="comment_id" value="" />
 
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<a href="javascript:;" onclick="txresize('co_content', 1, 100);"><span class="glyphicon glyphicon-chevron-up"></span></a>
-				<a href="javascript:;" onclick="txresize('co_content', 2, 50);"><span class="glyphicon glyphicon-stop"></span></a>
-				<a href="javascript:;" onclick="txresize('co_content', 3, 100);"><span class="glyphicon glyphicon-chevron-down"></span></a>
-				&nbsp;
-				<label class="checkbox-inline">
-					<input type="checkbox" id="co_secret" name="co_secret" value="secret" /> 비밀글
-				</label>
-				&nbsp;
-				<? if (!IS_MEMBER): ?>
-				<span class="form-group">
-					<label class="control-label" for="co_name">이름</label>
-					<input type="text" id="co_name" class="form-control input-sm span2" name="co_name" maxlength="10" />
-				</span>
-				<span class="form-group">
-					<label class="control-label" for="co_password">비밀번호</label>
-					<input type="password" id="co_password" class="form-control input-sm span2" name="co_password" maxlength="20" />
-				</span>
-				<span class="form-group">
-					<label class="control-label text-danger" for="wr_key">그림의 글자를 먼저 입력하세요.</label>
-					<input type="text" id="wr_key" class="form-control input-sm span2" name="wr_key" title="아래 이미지의 글자를 입력하세요." />
-				</span>
-				<? endif; ?>
-    			<span class="pull-right">
-    				<button type="button" id="cw_place" class="close" onclick="comment_box('', 'c');" title="원위치">&times;</button>
-    			</span>
-			</div>
-			<div class="panel-body">
-				<span class="pull-left"><textarea id="co_content" class="form-control" name="co_content" rows="2"></textarea></span>
-				<span class="pull-right">
-					<? if (!IS_MEMBER): ?>
-					<img src="<?=IMG_DIR?>/js/load_kcaptcha.gif" id="kcaptcha" class="img-rounded" width="100" height="50" title="글자가 잘 안 보일 때 이미지를 클릭하면 새로운 글자가 나옵니다." alt="자동등록방지" />
-					<? endif; ?> 
-					<button type="submit" id="btn_submit" class="btn btn-lg btn-primary">글쓰기</button>
-				</span>
-			</div>
-		</div>
-		</form>
-	</div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <a href="javascript:;" onclick="txresize('co_content', 1, 100);"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                <a href="javascript:;" onclick="txresize('co_content', 2, 50);"><span class="glyphicon glyphicon-stop"></span></a>
+                <a href="javascript:;" onclick="txresize('co_content', 3, 100);"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                &nbsp;
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="co_secret" name="co_secret" value="secret" /> 비밀글
+                </label>
+                &nbsp;
+                <? if (!IS_MEMBER): ?>
+                <span class="form-group">
+                    <label class="control-label" for="co_name">이름</label>
+                    <input type="text" id="co_name" class="form-control input-sm span2" name="co_name" maxlength="10" />
+                </span>
+                <span class="form-group">
+                    <label class="control-label" for="co_password">비밀번호</label>
+                    <input type="password" id="co_password" class="form-control input-sm span2" name="co_password" maxlength="20" />
+                </span>
+                <span class="form-group">
+                    <label class="control-label text-danger" for="wr_key">그림의 글자를 먼저 입력하세요.</label>
+                    <input type="text" id="wr_key" class="form-control input-sm span2" name="wr_key" title="아래 이미지의 글자를 입력하세요." />
+                </span>
+                <? endif; ?>
+                <span class="pull-right">
+                    <button type="button" id="cw_place" class="close" onclick="comment_box('', 'c');" title="원위치">&times;</button>
+                </span>
+            </div>
+            <div class="panel-body">
+                <span class="pull-left"><textarea id="co_content" class="form-control" name="co_content" rows="2"></textarea></span>
+                <span class="pull-right">
+                    <? if (!IS_MEMBER): ?>
+                    <img src="<?=IMG_DIR?>/js/load_kcaptcha.gif" id="kcaptcha" class="img-rounded" width="100" height="50" title="글자가 잘 안 보일 때 이미지를 클릭하면 새로운 글자가 나옵니다." alt="자동등록방지" />
+                    <? endif; ?> 
+                    <button type="submit" id="btn_submit" class="btn btn-lg btn-primary">글쓰기</button>
+                </span>
+            </div>
+        </div>
+        </form>
+    </div>
 </div>
 
 
 <script type='text/javascript'>
 //<![CDATA[
-function fviewcomment_submit(f)	{
-	var	pattern	= /(^\s*)|(\s*$)/g;	// \s 공백 문자
-	
-	// 양쪽공백 없애기
-	if (f.co_content.value.replace(pattern, '') == '') {
-		alert('댓글을 입력하세요.');
-		f.co_content.focus();
-		return false;
-	}
+function fviewcomment_submit(f)    {
+    var    pattern    = /(^\s*)|(\s*$)/g;    // \s 공백 문자
+    
+    // 양쪽공백 없애기
+    if (f.co_content.value.replace(pattern, '') == '') {
+        alert('댓글을 입력하세요.');
+        f.co_content.focus();
+        return false;
+    }
 
-	<? if (!IS_MEMBER): ?>
-	if (f.co_name.value.replace(pattern, '') == '') {
-		alert('이름을 입력하세요.');
-		f.co_name.focus();
-		return false;
-	}
+    <? if (!IS_MEMBER): ?>
+    if (f.co_name.value.replace(pattern, '') == '') {
+        alert('이름을 입력하세요.');
+        f.co_name.focus();
+        return false;
+    }
 
-	if (f.co_password.value.replace(pattern, '').length < 3) {
-		alert('비밀번호를 3자 이상 입력하세요.');
-		f.co_password.focus();
-		return false;
-	}
+    if (f.co_password.value.replace(pattern, '').length < 3) {
+        alert('비밀번호를 3자 이상 입력하세요.');
+        f.co_password.focus();
+        return false;
+    }
 
-	if (hex_md5(f.wr_key.value)	!= md5_norobot_key) {
-		alert('자동등록방지용 글자가 제대로 입력되지 않았습니다.');
-		f.wr_key.select();
-		return false;
-	}
-	<? endif; ?>
+    if (hex_md5(f.wr_key.value)    != md5_norobot_key) {
+        alert('자동등록방지용 글자가 제대로 입력되지 않았습니다.');
+        f.wr_key.select();
+        return false;
+    }
+    <? endif; ?>
 
-	return true;
+    return true;
 }
 //]]>
 </script>

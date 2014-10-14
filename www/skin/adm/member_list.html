@@ -1,9 +1,9 @@
 <form class="form-inline" name="fsearch" method="get" action="<?=ADM_PATH?>/member/lists" onsubmit="return doSearch(this);">
 <div>
-	&deg; <a href="<?=ADM_PATH?>/member/lists">처음</a> (총회원수 : <?=$total_cnt?> /
-	<a href="<?=ADM_PATH?>/member/lists?sst=mb_leave_date&sod=desc&sfl=<?=$sfl?>&stx=<?=$stx?>" title="탈퇴한 회원부터 출력"><font color="crimson">탈퇴 : <?=$leave_cnt?></font></a>)
-	<p class="pull-right">
-		<select name="sfl" class="form-control span3">
+    &deg; <a href="<?=ADM_PATH?>/member/lists">처음</a> (총회원수 : <?=$total_cnt?> /
+    <a href="<?=ADM_PATH?>/member/lists?sst=mb_leave_date&sod=desc&sfl=<?=$sfl?>&stx=<?=$stx?>" title="탈퇴한 회원부터 출력"><font color="crimson">탈퇴 : <?=$leave_cnt?></font></a>)
+    <p class="pull-right">
+        <select name="sfl" class="form-control span3">
             <option value="mb_id">회원아이디</option>
             <option value="mb_name">이름</option>
             <option value="mb_nick">별명</option>
@@ -14,10 +14,10 @@
             <option value="mb_point">포인트</option>
             <option value="mb_datetime">가입일시</option>
             <option value="mb_ip">IP</option>
-    	</select>
+        </select>
         <input type="text" name="stx" class="form-control span3" value="<?=$stx?>" />
         <button type="submit" class="btn btn-primary">검색</button>
-	</p>
+    </p>
 </div>
 </form>
 
@@ -25,47 +25,47 @@
 <input type="hidden" name="token" value="<?=$token?>" />
 
 <table class="table table-condensed table-striped">
-	<thead>
-		<tr>
+    <thead>
+        <tr>
             <th><input type="checkbox" id="allcheck" /></th>
-			<th><a href="<?=$sort_mb_id?>">회원아이디</a></th>
-		    <th><a href="<?=$sort_mb_name?>">이름</a></th>
-		    <? if ($use_nick): ?><th><a href="<?=$sort_mb_nick?>">별명</a></th><? endif; ?>
-		    <th><a href="<?=$sort_mb_level?>">권한</a></th>
-		    <? if ($use_point): ?><th><a href="<?=$sort_mb_point?>">포인트</a></th><? endif; ?>
-		    <th><a href="<?=$sort_mb_today_login?>">최종접속</a></th>
-		    <th title="메일수신허용여부"><a href="<?=$sort_mb_mailling?>">수신</a></th>
-		    <th title="정보공개여부"><a href="<?=$sort_mb_open?>">공개</a></th>
-		    <th><a href="<?=$sort_mb_email_certify?>">인증</a></th>
-			<th><?=$s_add?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<? foreach ($list as $o): ?>
-		<tr>
-			<td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
-			<td><?=$o->id_s?></td>
-			<td><?=$o->name?></td>
-			<? if($use_nick): ?><td><?=$o->nick?></td><? endif; ?>
-			<td><?=$o->level_select?></td>
-			<? if($use_point): ?><td><a href="<?=ADM_PATH?>/point/lists?sfl=mb_id&stx=<?=$o->id?>"><?=$o->point?></a></td><? endif; ?>
-			<td><?=$o->today_login?></td>
-			<td><?=$o->mailling_chk?></td>
-			<td><?=$o->open_chk?></td>
-			<td title="<?=$o->email_certify?>"><?=$o->mail_certify_chk?></td>
-			<td><span class="btn-group"><?=$o->s_mod?><?=$o->s_del?></span></td>
-		</tr>
-		<? endforeach; ?>
-	</tbody>
+            <th><a href="<?=$sort_mb_id?>">회원아이디</a></th>
+            <th><a href="<?=$sort_mb_name?>">이름</a></th>
+            <? if ($use_nick): ?><th><a href="<?=$sort_mb_nick?>">별명</a></th><? endif; ?>
+            <th><a href="<?=$sort_mb_level?>">권한</a></th>
+            <? if ($use_point): ?><th><a href="<?=$sort_mb_point?>">포인트</a></th><? endif; ?>
+            <th><a href="<?=$sort_mb_today_login?>">최종접속</a></th>
+            <th title="메일수신허용여부"><a href="<?=$sort_mb_mailling?>">수신</a></th>
+            <th title="정보공개여부"><a href="<?=$sort_mb_open?>">공개</a></th>
+            <th><a href="<?=$sort_mb_email_certify?>">인증</a></th>
+            <th><?=$s_add?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <? foreach ($list as $o): ?>
+        <tr>
+            <td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
+            <td><?=$o->id_s?></td>
+            <td><?=$o->name?></td>
+            <? if($use_nick): ?><td><?=$o->nick?></td><? endif; ?>
+            <td><?=$o->level_select?></td>
+            <? if($use_point): ?><td><a href="<?=ADM_PATH?>/point/lists?sfl=mb_id&stx=<?=$o->id?>"><?=$o->point?></a></td><? endif; ?>
+            <td><?=$o->today_login?></td>
+            <td><?=$o->mailling_chk?></td>
+            <td><?=$o->open_chk?></td>
+            <td title="<?=$o->email_certify?>"><?=$o->mail_certify_chk?></td>
+            <td><span class="btn-group"><?=$o->s_mod?><?=$o->s_del?></span></td>
+        </tr>
+        <? endforeach; ?>
+    </tbody>
 </table>
 
 <div class="clearfix">
-	<button type="button" class="btn btn-info" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/member/update')">선택수정</button>
-	<button type="button" class="btn btn-danger" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/member/delete')">선택삭제</button>
+    <button type="button" class="btn btn-info" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/member/update')">선택수정</button>
+    <button type="button" class="btn btn-danger" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/member/delete')">선택삭제</button>
 
-	<div class="pull-right">
-		<?=$paging?>
-	</div>
+    <div class="pull-right">
+        <?=$paging?>
+    </div>
 </div>
 
 </form>

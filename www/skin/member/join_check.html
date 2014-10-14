@@ -2,37 +2,37 @@
 
 <?=validation_errors("<pre>","</pre>")?>
 <fieldset>
-	<legend><?=$title?></legend>
+    <legend><?=$title?></legend>
 
-	<h5>회원가입약관</h5>
-	<textarea class="form-control" rows="5" readonly="readonly"><?=$stipulation?></textarea>
-	<br/>
+    <h5>회원가입약관</h5>
+    <textarea class="form-control" rows="5" readonly="readonly"><?=$stipulation?></textarea>
+    <br/>
 
-	<div class="btn-group" data-toggle="buttons">
-		<label id="agree" class="btn btn-sm btn-default">
-			<input type="checkbox" name="agree" value="1" />
-			<span class="glyphicon glyphicon-unchecked"></span> 회원가입약관을 읽었으며 내용에 동의합니다.
-		</label>
-	</div>
+    <div class="btn-group" data-toggle="buttons">
+        <label id="agree" class="btn btn-sm btn-default">
+            <input type="checkbox" name="agree" value="1" />
+            <span class="glyphicon glyphicon-unchecked"></span> 회원가입약관을 읽었으며 내용에 동의합니다.
+        </label>
+    </div>
 
-	<br/><br/>
+    <br/><br/>
 
-	<h5>개인정보취급방침</h5>
-	<textarea class="form-control" rows="5" readonly="readonly"><?=$privacy?></textarea>
-	<br/>
+    <h5>개인정보취급방침</h5>
+    <textarea class="form-control" rows="5" readonly="readonly"><?=$privacy?></textarea>
+    <br/>
 
-	<div class="btn-group" data-toggle="buttons">
-		<label id="agree2" class="btn btn-sm btn-default">
-			<input type="checkbox" name="agree2" value="1" />
-			<span class="glyphicon glyphicon-unchecked"></span> 개인정보취급방침을 읽었으며 내용에 동의합니다.
-		</label>
-	</div>
+    <div class="btn-group" data-toggle="buttons">
+        <label id="agree2" class="btn btn-sm btn-default">
+            <input type="checkbox" name="agree2" value="1" />
+            <span class="glyphicon glyphicon-unchecked"></span> 개인정보취급방침을 읽었으며 내용에 동의합니다.
+        </label>
+    </div>
 
-	<hr />
+    <hr />
 
-	<p class="text-center">
-		<button type="submit" class="btn btn-lg btn-success">확인</button>
-	</p>
+    <p class="text-center">
+        <button type="submit" class="btn btn-lg btn-success">확인</button>
+    </p>
 </fieldset>
 
 </form>
@@ -44,16 +44,16 @@
 $('#agree,#agree2').checkicon();
 
 $(function() {
-	$('#fjoin_check').validate({
-		rules: {
-			agree  : { required:true },
-			agree2 : { required:true }
-		},
-		messages: {
-			agree  : { required:'회원가입약관의 내용에 동의해야 회원가입 하실 수 있습니다.' },
-			agree2 : { required:'개인정보취급방침의 내용에 동의해야 회원가입 하실 수 있습니다.' }
-		}
-	});
+    $('#fjoin_check').validate({
+        rules: {
+            agree  : { required:true },
+            agree2 : { required:true }
+        },
+        messages: {
+            agree  : { required:'회원가입약관의 내용에 동의해야 회원가입 하실 수 있습니다.' },
+            agree2 : { required:'개인정보취급방침의 내용에 동의해야 회원가입 하실 수 있습니다.' }
+        }
+    });
 });
 //]]>
 </script>

@@ -1,113 +1,113 @@
 <form id="fwrite" class="form-horizontal" name="fwrite" method="post" action="<?=RT_PATH?>/_trans/board_write/update" enctype="multipart/form-data">
-<input type="hidden" name="w" 		 value="<?=$w?>" />
+<input type="hidden" name="w"          value="<?=$w?>" />
 <input type="hidden" name="bo_table" value="<?=BO_TABLE?>" />
 <input type="hidden" name="wr_id"    value="<?=$wr_id?>" />
-<input type="hidden" name="qstr"	 value="<?=$qstr?>" />
+<input type="hidden" name="qstr"     value="<?=$qstr?>" />
 <?=$option_hidden?>
 
 <fieldset>
-	<legend><?=$title_msg?></legend>
+    <legend><?=$title_msg?></legend>
 
-	<? if ($is_sign): ?>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="wr_name">이름</label>
-		<div class="col-md-2">
-			<input type="text" id="wr_name" name="wr_name" class="form-control" maxlength="10" value="<?=$name?>" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="wr_password">비밀번호</label>
-		<div class="col-md-3">
-			<input type="password" id="wr_password" name="wr_password" class="form-control" maxlength="20" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="wr_email">이메일</label>
-		<div class="col-md-4">
-			<div class="input-group">
-  				<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-				<input type="text" id="wr_email" name="wr_email" class="form-control" maxlength="50" value="<?=$email?>" />
-			</div>
-		</div>
-	</div>
-	<? endif; ?>
+    <? if ($is_sign): ?>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="wr_name">이름</label>
+        <div class="col-md-2">
+            <input type="text" id="wr_name" name="wr_name" class="form-control" maxlength="10" value="<?=$name?>" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="wr_password">비밀번호</label>
+        <div class="col-md-3">
+            <input type="password" id="wr_password" name="wr_password" class="form-control" maxlength="20" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="wr_email">이메일</label>
+        <div class="col-md-4">
+            <div class="input-group">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                <input type="text" id="wr_email" name="wr_email" class="form-control" maxlength="50" value="<?=$email?>" />
+            </div>
+        </div>
+    </div>
+    <? endif; ?>
 
-	<? if ($option): ?>
-	<div class="form-group">
-		<label class="col-md-3 control-label">옵션</label>
-		<div class="col-md-9">
-			<div class="btn-group" data-toggle="buttons">
-				<? foreach ($option as $key => $r): ?>
-     			<label id="<?=$key?>" class="btn btn-sm btn-default">
-     				<input type="checkbox" name="<?=$key?>" value="<?=$r['value']?>" />
-     				<span class="glyphicon glyphicon-unchecked"></span> <?=$r['title']?>
-     			</label>
-     			<? endforeach; ?>
-     		</div>
-		</div>
-	</div>
-	<? endif; ?>
+    <? if ($option): ?>
+    <div class="form-group">
+        <label class="col-md-3 control-label">옵션</label>
+        <div class="col-md-9">
+            <div class="btn-group" data-toggle="buttons">
+                <? foreach ($option as $key => $r): ?>
+                 <label id="<?=$key?>" class="btn btn-sm btn-default">
+                     <input type="checkbox" name="<?=$key?>" value="<?=$r['value']?>" />
+                     <span class="glyphicon glyphicon-unchecked"></span> <?=$r['title']?>
+                 </label>
+                 <? endforeach; ?>
+             </div>
+        </div>
+    </div>
+    <? endif; ?>
 
-	<? if ($category): ?>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="cate">분류</label>
-		<div class="col-md-9">
-			<span><?=$category['select']?></span>
-	        <?=$category["scate"]?>
-		</div>
-	</div>
-	<? endif; ?>
+    <? if ($category): ?>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="cate">분류</label>
+        <div class="col-md-9">
+            <span><?=$category['select']?></span>
+            <?=$category["scate"]?>
+        </div>
+    </div>
+    <? endif; ?>
 
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="wr_subject">제목</label>
-		<div class="col-md-9">
-			<input type="text" id="wr_subject" name="wr_subject" class="form-control" value="<?=$subject?>" />
-		</div>
-	</div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="wr_subject">제목</label>
+        <div class="col-md-9">
+            <input type="text" id="wr_subject" name="wr_subject" class="form-control" value="<?=$subject?>" />
+        </div>
+    </div>
 
-	<? if (!$is_editor): ?>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="wr_content">내용</label>
-		<div class="col-md-9">
-			<span class="btn-group">
-				<button type="button" class="btn btn-sm btn-info" onclick="txresize('wr_content', 1, 100);"><span class="glyphicon glyphicon-chevron-up"></span></button>
-				<button type="button" class="btn btn-sm btn-info" onclick="txresize('wr_content', 2, 200);"><span class="glyphicon glyphicon-stop"></span></button>
-				<button type="button" class="btn btn-sm btn-info" onclick="txresize('wr_content', 3, 100);"><span class="glyphicon glyphicon-chevron-down"></span></button>
-			</span>
-			<textarea id="wr_content" name="wr_content" class="form-control" rows="15"><?=$content?></textarea>
-		</div>
-	</div>
-	<? endif; ?>
+    <? if (!$is_editor): ?>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="wr_content">내용</label>
+        <div class="col-md-9">
+            <span class="btn-group">
+                <button type="button" class="btn btn-sm btn-info" onclick="txresize('wr_content', 1, 100);"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                <button type="button" class="btn btn-sm btn-info" onclick="txresize('wr_content', 2, 200);"><span class="glyphicon glyphicon-stop"></span></button>
+                <button type="button" class="btn btn-sm btn-info" onclick="txresize('wr_content', 3, 100);"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            </span>
+            <textarea id="wr_content" name="wr_content" class="form-control" rows="15"><?=$content?></textarea>
+        </div>
+    </div>
+    <? endif; ?>
 
-	<?=$editor?>
+    <?=$editor?>
 
-	<div class="form-group">
-		<label class="col-md-3 control-label"></label>
-		<div class="col-md-5">
-			<? if (!IS_MEMBER): ?>
-			<img src="<?=IMG_DIR?>/js/load_kcaptcha.gif" id="kcaptcha" class="img-rounded" width="100" height="50" alt="자동등록방지" />
-			<input type="text" name="wr_key" class="form-control span2" /> 이미지의 글자를 입력하세요.
-			<span class="help-block">글자가 잘 안 보일 때 이미지를 클릭하면 새로운 글자가 나옵니다.</span>
-			<? endif; ?>
-		</div>
-		<div class="col-md-4 text-right">
-			<? if ($syntax): ?>
-			<span class="glyphicon glyphicon-cog"></span> CodeSyntax <select class="form-control span3" onchange="codeSyntax(this);">
-				<option value="">- 선택 -</option>
-				<? foreach ($syntax as $brush => $name): ?>
-				<option value="<?=$brush?>"><?=$name?></option>
-				<? endforeach; ?>
-			</select>
-			<? endif; ?>
-		</div>
-	</div>
+    <div class="form-group">
+        <label class="col-md-3 control-label"></label>
+        <div class="col-md-5">
+            <? if (!IS_MEMBER): ?>
+            <img src="<?=IMG_DIR?>/js/load_kcaptcha.gif" id="kcaptcha" class="img-rounded" width="100" height="50" alt="자동등록방지" />
+            <input type="text" name="wr_key" class="form-control span2" /> 이미지의 글자를 입력하세요.
+            <span class="help-block">글자가 잘 안 보일 때 이미지를 클릭하면 새로운 글자가 나옵니다.</span>
+            <? endif; ?>
+        </div>
+        <div class="col-md-4 text-right">
+            <? if ($syntax): ?>
+            <span class="glyphicon glyphicon-cog"></span> CodeSyntax <select class="form-control span3" onchange="codeSyntax(this);">
+                <option value="">- 선택 -</option>
+                <? foreach ($syntax as $brush => $name): ?>
+                <option value="<?=$brush?>"><?=$name?></option>
+                <? endforeach; ?>
+            </select>
+            <? endif; ?>
+        </div>
+    </div>
 
-	<hr />
-	
-	<p class="text-center">
-		<button type="submit" id="write_submit" class="btn btn-lg btn-success" data-loading-text="등록 중..."><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=RT_PATH?>/board/<?=BO_TABLE?>/lists<?=$sca_str?>';">목록</button>
-	</p>
+    <hr />
+    
+    <p class="text-center">
+        <button type="submit" id="write_submit" class="btn btn-lg btn-success" data-loading-text="등록 중..."><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=RT_PATH?>/board/<?=BO_TABLE?>/lists<?=$sca_str?>';">목록</button>
+    </p>
 </fieldset>
 
 </form>
@@ -119,63 +119,63 @@ var editorConfig = <?=$editorConfig?>
   , editorNumber = []
   , beforeUnload = true;
 window.onbeforeunload = function() {
-	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+    if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
 }
 
 <? if ($option): ?>
 var option_check = <?=$option_check?>;
 for (x in option_check) {
-	$('#' + x).checkicon(option_check[x]);
+    $('#' + x).checkicon(option_check[x]);
 }
 <? endif; ?>
 
 $(function() {
-	<? if ($category): ?>
-	currentCate('ca_code', new Array('<?=$category['code']?>'));
-	<? endif; ?>
+    <? if ($category): ?>
+    currentCate('ca_code', new Array('<?=$category['code']?>'));
+    <? endif; ?>
 
-	$('#fwrite').validate({
-		onkeyup: false,
-		rules: {
-			<? if ($is_sign): ?>
-			wr_name: { required:true,  minlength:2 },
-			wr_password: { required:function() { return document.fwrite.w.value != 'u'; }, minlength:3 },
-			wr_email: { required:'#mail:checked', email:true },
-			<? endif; ?>
-			wr_key: { required:true, wrKey:true },
-			ca_code: 'required',
-			wr_subject: 'required'
-		},
-		messages: {
-			<? if ($is_sign): ?>
-			wr_name: { required:'이름을 입력하세요.', minlength:'최소 2자 이상 입력하세요.' },
-			wr_password: { required:'비밀번호를 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
-			wr_email: { required:'답변메일을 입력하세요.', email:'E-mail 형식이 올바르지 않습니다.' },
-			<? endif; ?>
-			wr_key: '자동등록방지용 코드가 맞지 않습니다.',
-			ca_code: '분류를 선택하십시오.',
-			wr_subject: '제목을 입력하세요.'
-		},
-		submitHandler: function(f) {
-			beforeUnload = false;
+    $('#fwrite').validate({
+        onkeyup: false,
+        rules: {
+            <? if ($is_sign): ?>
+            wr_name: { required:true,  minlength:2 },
+            wr_password: { required:function() { return document.fwrite.w.value != 'u'; }, minlength:3 },
+            wr_email: { required:'#mail:checked', email:true },
+            <? endif; ?>
+            wr_key: { required:true, wrKey:true },
+            ca_code: 'required',
+            wr_subject: 'required'
+        },
+        messages: {
+            <? if ($is_sign): ?>
+            wr_name: { required:'이름을 입력하세요.', minlength:'최소 2자 이상 입력하세요.' },
+            wr_password: { required:'비밀번호를 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
+            wr_email: { required:'답변메일을 입력하세요.', email:'E-mail 형식이 올바르지 않습니다.' },
+            <? endif; ?>
+            wr_key: '자동등록방지용 코드가 맞지 않습니다.',
+            ca_code: '분류를 선택하십시오.',
+            wr_subject: '제목을 입력하세요.'
+        },
+        submitHandler: function(f) {
+            beforeUnload = false;
 
-			<? if ($is_editor): ?>
-			editorNumber.forEach(function(i) {
-				Editor.switchEditor(i); // 에디터 전환
-				Editor.save(); // 글 등록 
-			});
+            <? if ($is_editor): ?>
+            editorNumber.forEach(function(i) {
+                Editor.switchEditor(i); // 에디터 전환
+                Editor.save(); // 글 등록 
+            });
 
             <? else: // 에디터가 아닐 때 ?>
             if (f.wr_content.value.length < 5) {
-				this.showErrors({'wr_content': '내용을 최소 5자 이상 입력하세요.'});
-				return false;
-			}
+                this.showErrors({'wr_content': '내용을 최소 5자 이상 입력하세요.'});
+                return false;
+            }
 
-			$('#write_submit').button('loading');
-		    f.submit();
+            $('#write_submit').button('loading');
+            f.submit();
             <? endif; ?>
-		}
-	});
+        }
+    });
 });
 //]]>
 </script>

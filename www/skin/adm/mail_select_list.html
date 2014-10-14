@@ -1,5 +1,5 @@
 <div class="page-header">
-	&deg; 검색 회원수 : <?=$select_cnt?> 명
+    &deg; 검색 회원수 : <?=$select_cnt?> 명
 </div>
 
 
@@ -8,45 +8,45 @@
 <input type="hidden" name="ma_id" value="<?=$ma_id?>"/>
 
 <table class="table table-condensed table-striped">
-	<thead>
-		<tr>
-			<th>회원아이디</th>
-			<th>이름</th>
-			<? if ($use_nick): ?><th>별명</th><? endif; ?>
-			<th>생일</th>
-			<th>이메일</th>
-		</tr>
-	</thead>
-	<tbody>
-		<? foreach ($list as $o): ?>
-		<tr>
-			<td><input type="hidden" name="mb_id[]" value="<?=$o->mb_id?>"/>
-				<?=$o->mb_id?>
-			</td>
-			<td><input type="hidden" name="mb_name[<?=$o->mb_id?>]" value="<?=$o->mb_name?>"/>
-				<?=$o->mb_name?>
-			</td>
-			<? if($use_nick): ?>
-			<td><input type="hidden" name="mb_nick[<?=$o->mb_id?>]" value="<?=$o->mb_nick?>"/>
-				<?=$o->mb_nick?>
-			</td>
-			<? endif; ?>
-			<td><input type="hidden" name="mb_birth[<?=$o->mb_id?>]" value="<?=$o->mb_birth?>"/>
-				<?=$o->mb_birth_year?><?=$o->mb_birth?>
-			</td>
-			<td><input type="hidden" name="mb_email[<?=$o->mb_id?>]" value="<?=$o->mb_email?>"/>
-				<?=$o->mb_email?>
-			</td>
-		</tr>
-		<? endforeach; ?>
-	</tbody>
+    <thead>
+        <tr>
+            <th>회원아이디</th>
+            <th>이름</th>
+            <? if ($use_nick): ?><th>별명</th><? endif; ?>
+            <th>생일</th>
+            <th>이메일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <? foreach ($list as $o): ?>
+        <tr>
+            <td><input type="hidden" name="mb_id[]" value="<?=$o->mb_id?>"/>
+                <?=$o->mb_id?>
+            </td>
+            <td><input type="hidden" name="mb_name[<?=$o->mb_id?>]" value="<?=$o->mb_name?>"/>
+                <?=$o->mb_name?>
+            </td>
+            <? if($use_nick): ?>
+            <td><input type="hidden" name="mb_nick[<?=$o->mb_id?>]" value="<?=$o->mb_nick?>"/>
+                <?=$o->mb_nick?>
+            </td>
+            <? endif; ?>
+            <td><input type="hidden" name="mb_birth[<?=$o->mb_id?>]" value="<?=$o->mb_birth?>"/>
+                <?=$o->mb_birth_year?><?=$o->mb_birth?>
+            </td>
+            <td><input type="hidden" name="mb_email[<?=$o->mb_id?>]" value="<?=$o->mb_email?>"/>
+                <?=$o->mb_email?>
+            </td>
+        </tr>
+        <? endforeach; ?>
+    </tbody>
 </table>
 
 <hr/>
 
 <p class="text-center">
-	<button type="submit" class="btn btn-lg btn-success">메일 보내기</button>&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/mail/select_form/<?=$ma_id?>';">뒤 로</button>
+    <button type="submit" class="btn btn-lg btn-success">메일 보내기</button>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/mail/select_form/<?=$ma_id?>';">뒤 로</button>
 </p>
 
 </form>

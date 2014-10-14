@@ -4,41 +4,41 @@
 
 <?=validation_errors('<pre>','</pre>')?>
 <fieldset>
-	<legend>&deg; <strong><?=$title?></strong></legend>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="gr_id">그룹 ID</label>
-		<div class="col-md-9">
-			<? if ($w) : ?>
-			<p class="form-control-static text-primary"><strong><?=$gr_id?></strong></p>
-			<input type="hidden" name="gr_id" value="<?=$gr_id?>" />
-			<? else: ?>
-			<input type="text" id="gr_id" name="gr_id" class="form-control span3" maxlength="20" value="<?=$gr_id?>" />
-			영문자, 숫자, _ 만 가능 (공백없이)
-			<? endif; ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="gr_subject">그룹 제목</label>
-		<div class="col-md-9">
-			<input type="text" id="gr_subject" name="gr_subject" class="form-control span4" maxlength="20" value="<?=$gr_subject?>" />
-	    	<? if ($w) : ?>
-			<button type="button" class="btn btn-default" onclick="document.location.href='<?=ADM_PATH?>/board/form';">게시판생성</button>
-	    	<? endif; ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="gr_admin">그룹 관리자</label>
-		<div class="col-md-9">
-			<input type="text" id="gr_admin" name="gr_admin" class="form-control span2" maxlength="20" value="<?=$gr_admin?>" />
-		</div>
-	</div>
+    <legend>&deg; <strong><?=$title?></strong></legend>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="gr_id">그룹 ID</label>
+        <div class="col-md-9">
+            <? if ($w) : ?>
+            <p class="form-control-static text-primary"><strong><?=$gr_id?></strong></p>
+            <input type="hidden" name="gr_id" value="<?=$gr_id?>" />
+            <? else: ?>
+            <input type="text" id="gr_id" name="gr_id" class="form-control span3" maxlength="20" value="<?=$gr_id?>" />
+            영문자, 숫자, _ 만 가능 (공백없이)
+            <? endif; ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="gr_subject">그룹 제목</label>
+        <div class="col-md-9">
+            <input type="text" id="gr_subject" name="gr_subject" class="form-control span4" maxlength="20" value="<?=$gr_subject?>" />
+            <? if ($w) : ?>
+            <button type="button" class="btn btn-default" onclick="document.location.href='<?=ADM_PATH?>/board/form';">게시판생성</button>
+            <? endif; ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="gr_admin">그룹 관리자</label>
+        <div class="col-md-9">
+            <input type="text" id="gr_admin" name="gr_admin" class="form-control span2" maxlength="20" value="<?=$gr_admin?>" />
+        </div>
+    </div>
 
-	<hr />
-	
-	<p class="text-center">
-		<button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/boardgroup/lists';">목록</button>
-	</p>
+    <hr />
+    
+    <p class="text-center">
+        <button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/boardgroup/lists';">목록</button>
+    </p>
 </fieldset>
 
 </form>
@@ -49,18 +49,18 @@
 <script type='text/javascript'>
 //<![CDATA[
 $(function() {
-	$('#fboardgroup').validate({
-		rules: {
-			gr_id: { required:"input[name='w']:blank", alphanumunder:true, minlength:3 },
-			gr_subject: 'required',
-			gr_admin: { alphanumunder:true, minlength:3 }
-		},
-		messages: {
-			gr_id: { required:'아이디를 입력하세요.', minlength:"최소 3자 이상 입력하세요." },
-			gr_subject: '제목을 입력하세요.',
-			gr_admin: { minlength:'최소 3자 이상 입력하세요.' }
-		}
-	});
+    $('#fboardgroup').validate({
+        rules: {
+            gr_id: { required:"input[name='w']:blank", alphanumunder:true, minlength:3 },
+            gr_subject: 'required',
+            gr_admin: { alphanumunder:true, minlength:3 }
+        },
+        messages: {
+            gr_id: { required:'아이디를 입력하세요.', minlength:"최소 3자 이상 입력하세요." },
+            gr_subject: '제목을 입력하세요.',
+            gr_admin: { minlength:'최소 3자 이상 입력하세요.' }
+        }
+    });
 });
 //]]>
 </script>

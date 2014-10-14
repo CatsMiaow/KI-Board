@@ -4,331 +4,331 @@
 
 <?=validation_errors('<pre>','</pre>')?>
 <fieldset>
-	<legend>&deg; <strong><?=$title?></strong></legend>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_table">TABLE</label>
+    <legend>&deg; <strong><?=$title?></strong></legend>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_table">TABLE</label>
 
-		<? if ($w == "u"): ?>
-		<div class="col-md-9">
-			<span class="text-primary"><strong><?=$bo_table?></strong></span>
-			<a href="<?=RT_PATH?>/board/<?=$bo_table?>/lists" class="btn btn-xs btn-default" target="_blank"><span class="glyphicon glyphicon-search"></span></a>
-			<input type="hidden" name="bo_table" value="<?=$bo_table?>" />
-		</div>
+        <? if ($w == "u"): ?>
+        <div class="col-md-9">
+            <span class="text-primary"><strong><?=$bo_table?></strong></span>
+            <a href="<?=RT_PATH?>/board/<?=$bo_table?>/lists" class="btn btn-xs btn-default" target="_blank"><span class="glyphicon glyphicon-search"></span></a>
+            <input type="hidden" name="bo_table" value="<?=$bo_table?>" />
+        </div>
 
-		<? else: ?>
-		<div class="col-md-4">
-			<input type="text" id="bo_table" name="bo_table" class="form-control" maxlength="20" value="<?=$bo_table?>" />
-		</div>
-		<div class="col-md-5">영문자, 숫자, _ 만 가능 (공백없이 20자 이내)</div>
-		<? endif; ?>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="gr_id">그룹</label>
-		<div class="col-md-4"><?=$group_select?></div>
+        <? else: ?>
+        <div class="col-md-4">
+            <input type="text" id="bo_table" name="bo_table" class="form-control" maxlength="20" value="<?=$bo_table?>" />
+        </div>
+        <div class="col-md-5">영문자, 숫자, _ 만 가능 (공백없이 20자 이내)</div>
+        <? endif; ?>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="gr_id">그룹</label>
+        <div class="col-md-4"><?=$group_select?></div>
 
-		<? if ($w == "u"): ?>
-		<div class="col-md-5"><a href="<?=ADM_PATH?>/board/lists?sfl=gr_id&stx=<?=$gr_id?>">동일그룹게시판목록</a></div>
-		<? endif; ?>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_subject">게시판 제목</label>
-		<div class="col-md-4">
-			<input type="text" id="bo_subject" name="bo_subject" class="form-control" maxlength="20" value="<?=$bo_subject?>" />
-		</div>
-	</div>
+        <? if ($w == "u"): ?>
+        <div class="col-md-5"><a href="<?=ADM_PATH?>/board/lists?sfl=gr_id&stx=<?=$gr_id?>">동일그룹게시판목록</a></div>
+        <? endif; ?>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_subject">게시판 제목</label>
+        <div class="col-md-4">
+            <input type="text" id="bo_subject" name="bo_subject" class="form-control" maxlength="20" value="<?=$bo_subject?>" />
+        </div>
+    </div>
 
-	<? if ($w == "u"): ?>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="proc_count">카운트 조정</label>
-		<div class="col-md-9">
-			<label class="checkbox-inline"><input type="checkbox" id="proc_count" name="proc_count" value="1" /> 카운트를 조정합니다.</label>
-			( 현재 원글수 : <?=$bo_count_write?> , 현재 댓글수 : <?=$bo_count_comment?> )
-		</div>
-	</div>
-	<? endif; ?>
+    <? if ($w == "u"): ?>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="proc_count">카운트 조정</label>
+        <div class="col-md-9">
+            <label class="checkbox-inline"><input type="checkbox" id="proc_count" name="proc_count" value="1" /> 카운트를 조정합니다.</label>
+            ( 현재 원글수 : <?=$bo_count_write?> , 현재 댓글수 : <?=$bo_count_comment?> )
+        </div>
+    </div>
+    <? endif; ?>
 
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_admin">게시판 관리자<input type="checkbox" name="chk[bo_admin]" class="pull-left" value="1" /></label>
-		<div class="col-md-4">
-			<input type="text" id="bo_admin" name="bo_admin" class="form-control" value="<?=$bo_admin?>" />
-		</div>
-		<div class="col-md-5">
-			<label class="checkbox-inline">
-				<input type='checkbox' name='bo_use_private' value='1' <?=$use_private_chk?> /> 다른 회원의 글쓰기를 금지합니다.
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_list_level">목록보기 권한<input type="checkbox" name="chk[bo_list_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_list_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_read_level">글읽기 권한<input type="checkbox" name="chk[bo_read_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_read_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_write_level">글쓰기 권한<input type="checkbox" name="chk[bo_write_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_write_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_reply_level">글답변 권한<input type="checkbox" name="chk[bo_reply_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_reply_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_comment_level">댓글쓰기 권한<input type="checkbox" name="chk[bo_comment_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_comment_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_upload_level">업로드 권한<input type="checkbox" name="chk[bo_upload_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_upload_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_download_level">다운로드 권한<input type="checkbox" name="chk[bo_download_level]" class="pull-left" value="1" /></label>
-		<div class="col-md-2"><?=$bo_download_level?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_count_modify">원글 수정 불가<input type="checkbox" name="chk[bo_count_modify]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_count_modify" name="bo_count_modify" class="form-control text-right" maxlength="4" value="<?=$bo_count_modify?>" />
-		</div>
-		<div class="col-md-7">댓글 %개 이상 달리면 수정불가 ( 0 이면 제한 없음 )</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_count_delete">원글 삭제 불가<input type="checkbox" name="chk[bo_count_delete]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_count_delete" name="bo_count_delete" class="form-control text-right" maxlength="4" value="<?=$bo_count_delete?>" />
-		</div>
-		<div class="col-md-7">댓글 %개 이상 달리면 삭제불가 ( 0 이면 제한 없음 )</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_rss">RSS 사용<input type="checkbox" name="chk[bo_use_rss]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline"><input type="checkbox" id="bo_use_rss" name="bo_use_rss" value="1" <?=$use_rss_chk?> /> 사용</label>
-			( <a href="http://ko.wikipedia.org/wiki/RSS" target="_blank">RSS 란?</a> )
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_sns">SNS 보내기 사용<input type="checkbox" name="chk[bo_use_sns]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_sns" name="bo_use_sns" value="1" <?=$use_sns_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_comment">댓글 사용<input type="checkbox" name="chk[bo_use_comment]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_comment" name="bo_use_comment" value="1" <?=$use_comment_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_category">분류 사용<input type="checkbox" name="chk[bo_use_category]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline"><input type="checkbox" id="bo_use_category" name="bo_use_category" value="1" <?=$use_category_chk?> /> 사용</label>
-			<? if ($w): ?>
-			<a href="<?=ADM_PATH?>/category/lists/board/<?=$bo_table?>" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-			<? endif; ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_sideview">글쓴이 사이드뷰<input type="checkbox" name="chk[bo_use_sideview]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline"><input type="checkbox" id="bo_use_sideview" name="bo_use_sideview" value="1" <?=$use_sideview_chk?> /> 사용</label>
-			( 글쓴이 클릭시 나오는 레이어 메뉴 )
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_secret">비밀글 사용<input type="checkbox" name="chk[bo_use_secret]" class="pull-left" value="1" /></label>
-		<div class="col-md-4">
-			<select id="bo_use_secret" name="bo_use_secret" class="form-control">
-				<option value="0">사용하지 않음</option>
-				<option value="1">체크박스</option>
-				<option value="2">무조건</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_editor">Editor 사용<input type="checkbox" name="chk[bo_use_editor]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_editor" name="bo_use_editor" value="1" <?=$use_editor_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_name">이름(실명) 사용<input type="checkbox" name="chk[bo_use_name]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_name" name="bo_use_name" value="1" <?=$use_name_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_ip_view">IP 보이기 사용<input type="checkbox" name="chk[bo_use_ip_view]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_ip_view" name="bo_use_ip_view" value="1" <?=$use_ip_view_chk?>/> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_list_view">전체목록보이기 사용<input type="checkbox" name="chk[bo_use_list_view]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_list_view" name="bo_use_list_view" value="1" <?=$use_list_view_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_email">게시판 메일발송 사용<input type="checkbox" name="chk[bo_use_email]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_email" name="bo_use_email" value="1" <?=$use_email_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_extra">여분필드 사용<input type="checkbox" name="chk[bo_use_extra]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline"><input type="checkbox" id="bo_use_extra" name="bo_use_extra" value="1" <?=$use_extra_chk?> /> 사용</label>
-			<? if ($w): ?>
-			<a href="<?=ADM_PATH?>/boardextra/ex/<?=$bo_table?>" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-			<? endif; ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_syntax">CodeSyntax 사용<input type="checkbox" name="chk[bo_use_syntax]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline"><input type="checkbox" id="bo_use_syntax" name="bo_use_syntax" value="1" <?=$use_syntax_chk?> /> 사용</label>
-			( <a href="http://alexgorbatchev.com/SyntaxHighlighter" target="_blank">SyntaxHighlighter</a> )
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_skin">스킨 디렉토리<input type="checkbox" name="chk[bo_skin]" class="pull-left" value="1" /></label>
-		<div class="col-md-4"><?=$skin_select?></div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_page_rows">페이지당 게시글 수<input type="checkbox" name="chk[bo_page_rows]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_page_rows" name="bo_page_rows" class="form-control text-right" maxlength="4" value="<?=$bo_page_rows?>" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_page_rows_comt">페이지당 댓글 수<input type="checkbox" name="chk[bo_page_rows_comt]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_page_rows_comt" name="bo_page_rows_comt" class="form-control text-right" maxlength="4" value="<?=$bo_page_rows_comt?>" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_subject_len">제목 길이<input type="checkbox" name="chk[bo_subject_len]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_subject_len" name="bo_subject_len" class="form-control text-right" maxlength="4" value="<?=$bo_subject_len?>" />
-		</div>
-		<div class="col-md-7">목록에서의 제목 글자수. 잘리는 글은 … 로 표시</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_new">new 이미지<input type="checkbox" name="chk[bo_new]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_new" name="bo_new" class="form-control text-right" maxlength="4" value="<?=$bo_new?>" />
-		</div>
-		<div class="col-md-7">글 입력후 new 이미지를 출력하는 시간</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_hot">hot 이미지<input type="checkbox" name="chk[bo_hot]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_hot" name="bo_hot" class="form-control text-right" maxlength="4" value="<?=$bo_hot?>"/>
-		</div>
-		<div class="col-md-7">조회수가 설정값 이상이면 hot 이미지 출력</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_image_width">이미지 폭 크기<input type="checkbox" name="chk[bo_image_width]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_image_width" name="bo_image_width" class="form-control text-right" maxlength="4" value="<?=$bo_image_width?>" />
-		</div>
-		<div class="col-md-7">픽셀 (게시판에서 출력되는 이미지의 폭 크기)</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_reply_order">답변 달기<input type="checkbox" name="chk[bo_reply_order]" class="pull-left" value="1" /></label>
-		<div class="col-md-5">
-			<select id="bo_reply_order" name="bo_reply_order" class="form-control">
-				<option value="1">나중에 쓴 답변 아래로 달기 (기본)</option>
-				<option value="0">나중에 쓴 답변 위로 달기</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_sort_field">리스트 정렬 필드<input type="checkbox" name="chk[bo_sort_field]" class="pull-left" value="1" /></label>
-		<div class="col-md-5">
-			<select id="bo_sort_field" name="bo_sort_field" class="form-control">
-				<option value="">wr_num, wr_reply : 기본</option>
-				<option value="wr_datetime asc">wr_datetime asc : 날짜 이전것 부터</option>
-				<option value="wr_datetime desc">wr_datetime desc : 날짜 최근것 부터</option>
-				<option value="wr_hit asc, wr_num, wr_reply">wr_hit asc : 조회수 낮은것 부터</option>
-				<option value="wr_hit desc, wr_num, wr_reply">wr_hit desc : 조회수 높은것 부터</option>
-				<option value="wr_last asc">wr_last asc : 최근수정글 이전것 부터</option>
-				<option value="wr_last desc">wr_last desc : 최근수정글 최근것 부터</option>
-				<option value="wr_comment asc, wr_num, wr_reply">wr_comment asc : 댓글수 낮은것 부터</option>
-				<option value="wr_comment desc, wr_num, wr_reply">wr_comment asc : 댓글수 높은것 부터</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_upload_ext">파일 업로드 확장자<input type="checkbox" name="chk[bo_upload_ext]" class="pull-left" value="1" /></label>
-		<div class="col-md-4">
-			<input type="text" id="bo_upload_ext" name="bo_upload_ext" class="form-control" value="<?=$bo_upload_ext?>" />
-		</div>
-		<div class="col-md-5">"|"로 구분 (gif, jpg, png 제외)</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_upload_size">파일 업로드 제한용량<input type="checkbox" name="chk[bo_upload_size]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_upload_size" name="bo_upload_size" class="form-control text-right" maxlength="10" value="<?=$bo_upload_size?>" />
-		</div>
-		<div class="col-md-7">업로드 파일 한개당 %Kbytes 이하( 최대 <?=$upload_max_size?> 이하, 1M = 1,024 Kbytes )</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_head">상단 컨트롤러 경로<input type="checkbox" name="chk[bo_head]" class="pull-left" value="1" /></label>
-		<div class="col-md-4">
-			<input type="text" id="bo_head" name="bo_head" class="form-control" value="<?=$bo_head?>"/>
-		</div>
-		<div class="col-md-5">컨트롤러 / CSS</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_tail">하단 컨트롤러 경로<input type="checkbox" name="chk[bo_tail]" class="pull-left" value="1" /></label>
-		<div class="col-md-4">
-			<input type="text" id="bo_tail" name="bo_tail" class="form-control" value="<?=$bo_tail?>" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_insert_content">글쓰기 기본 내용<input type="checkbox" name="chk[bo_insert_content]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<textarea id="bo_insert_content" name="bo_insert_content" class="form-control" rows="3"><?=$bo_insert_content?></textarea>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_use_search">전체 검색 사용<input type="checkbox" name="chk[bo_use_search]" class="pull-left" value="1" /></label>
-		<div class="col-md-9">
-			<label class="checkbox-inline">
-				<input type="checkbox" id="bo_use_search" name="bo_use_search" value="1" <?=$use_search_chk?> /> 사용
-			</label>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="bo_order_search">전체 검색 순서<input type="checkbox" name="chk[bo_order_search]" class="pull-left" value="1" /></label>
-		<div class="col-md-2">
-			<input type="text" id="bo_order_search" name="bo_order_search" class="form-control text-right" maxlength="4" value="<?=$bo_order_search?>" />
-		</div>
-		<div class="col-md-7">숫자가 낮은 게시판 부터 검색</div>
-	</div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_admin">게시판 관리자<input type="checkbox" name="chk[bo_admin]" class="pull-left" value="1" /></label>
+        <div class="col-md-4">
+            <input type="text" id="bo_admin" name="bo_admin" class="form-control" value="<?=$bo_admin?>" />
+        </div>
+        <div class="col-md-5">
+            <label class="checkbox-inline">
+                <input type='checkbox' name='bo_use_private' value='1' <?=$use_private_chk?> /> 다른 회원의 글쓰기를 금지합니다.
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_list_level">목록보기 권한<input type="checkbox" name="chk[bo_list_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_list_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_read_level">글읽기 권한<input type="checkbox" name="chk[bo_read_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_read_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_write_level">글쓰기 권한<input type="checkbox" name="chk[bo_write_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_write_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_reply_level">글답변 권한<input type="checkbox" name="chk[bo_reply_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_reply_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_comment_level">댓글쓰기 권한<input type="checkbox" name="chk[bo_comment_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_comment_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_upload_level">업로드 권한<input type="checkbox" name="chk[bo_upload_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_upload_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_download_level">다운로드 권한<input type="checkbox" name="chk[bo_download_level]" class="pull-left" value="1" /></label>
+        <div class="col-md-2"><?=$bo_download_level?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_count_modify">원글 수정 불가<input type="checkbox" name="chk[bo_count_modify]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_count_modify" name="bo_count_modify" class="form-control text-right" maxlength="4" value="<?=$bo_count_modify?>" />
+        </div>
+        <div class="col-md-7">댓글 %개 이상 달리면 수정불가 ( 0 이면 제한 없음 )</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_count_delete">원글 삭제 불가<input type="checkbox" name="chk[bo_count_delete]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_count_delete" name="bo_count_delete" class="form-control text-right" maxlength="4" value="<?=$bo_count_delete?>" />
+        </div>
+        <div class="col-md-7">댓글 %개 이상 달리면 삭제불가 ( 0 이면 제한 없음 )</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_rss">RSS 사용<input type="checkbox" name="chk[bo_use_rss]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline"><input type="checkbox" id="bo_use_rss" name="bo_use_rss" value="1" <?=$use_rss_chk?> /> 사용</label>
+            ( <a href="http://ko.wikipedia.org/wiki/RSS" target="_blank">RSS 란?</a> )
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_sns">SNS 보내기 사용<input type="checkbox" name="chk[bo_use_sns]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_sns" name="bo_use_sns" value="1" <?=$use_sns_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_comment">댓글 사용<input type="checkbox" name="chk[bo_use_comment]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_comment" name="bo_use_comment" value="1" <?=$use_comment_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_category">분류 사용<input type="checkbox" name="chk[bo_use_category]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline"><input type="checkbox" id="bo_use_category" name="bo_use_category" value="1" <?=$use_category_chk?> /> 사용</label>
+            <? if ($w): ?>
+            <a href="<?=ADM_PATH?>/category/lists/board/<?=$bo_table?>" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+            <? endif; ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_sideview">글쓴이 사이드뷰<input type="checkbox" name="chk[bo_use_sideview]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline"><input type="checkbox" id="bo_use_sideview" name="bo_use_sideview" value="1" <?=$use_sideview_chk?> /> 사용</label>
+            ( 글쓴이 클릭시 나오는 레이어 메뉴 )
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_secret">비밀글 사용<input type="checkbox" name="chk[bo_use_secret]" class="pull-left" value="1" /></label>
+        <div class="col-md-4">
+            <select id="bo_use_secret" name="bo_use_secret" class="form-control">
+                <option value="0">사용하지 않음</option>
+                <option value="1">체크박스</option>
+                <option value="2">무조건</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_editor">Editor 사용<input type="checkbox" name="chk[bo_use_editor]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_editor" name="bo_use_editor" value="1" <?=$use_editor_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_name">이름(실명) 사용<input type="checkbox" name="chk[bo_use_name]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_name" name="bo_use_name" value="1" <?=$use_name_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_ip_view">IP 보이기 사용<input type="checkbox" name="chk[bo_use_ip_view]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_ip_view" name="bo_use_ip_view" value="1" <?=$use_ip_view_chk?>/> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_list_view">전체목록보이기 사용<input type="checkbox" name="chk[bo_use_list_view]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_list_view" name="bo_use_list_view" value="1" <?=$use_list_view_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_email">게시판 메일발송 사용<input type="checkbox" name="chk[bo_use_email]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_email" name="bo_use_email" value="1" <?=$use_email_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_extra">여분필드 사용<input type="checkbox" name="chk[bo_use_extra]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline"><input type="checkbox" id="bo_use_extra" name="bo_use_extra" value="1" <?=$use_extra_chk?> /> 사용</label>
+            <? if ($w): ?>
+            <a href="<?=ADM_PATH?>/boardextra/ex/<?=$bo_table?>" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+            <? endif; ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_syntax">CodeSyntax 사용<input type="checkbox" name="chk[bo_use_syntax]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline"><input type="checkbox" id="bo_use_syntax" name="bo_use_syntax" value="1" <?=$use_syntax_chk?> /> 사용</label>
+            ( <a href="http://alexgorbatchev.com/SyntaxHighlighter" target="_blank">SyntaxHighlighter</a> )
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_skin">스킨 디렉토리<input type="checkbox" name="chk[bo_skin]" class="pull-left" value="1" /></label>
+        <div class="col-md-4"><?=$skin_select?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_page_rows">페이지당 게시글 수<input type="checkbox" name="chk[bo_page_rows]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_page_rows" name="bo_page_rows" class="form-control text-right" maxlength="4" value="<?=$bo_page_rows?>" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_page_rows_comt">페이지당 댓글 수<input type="checkbox" name="chk[bo_page_rows_comt]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_page_rows_comt" name="bo_page_rows_comt" class="form-control text-right" maxlength="4" value="<?=$bo_page_rows_comt?>" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_subject_len">제목 길이<input type="checkbox" name="chk[bo_subject_len]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_subject_len" name="bo_subject_len" class="form-control text-right" maxlength="4" value="<?=$bo_subject_len?>" />
+        </div>
+        <div class="col-md-7">목록에서의 제목 글자수. 잘리는 글은 … 로 표시</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_new">new 이미지<input type="checkbox" name="chk[bo_new]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_new" name="bo_new" class="form-control text-right" maxlength="4" value="<?=$bo_new?>" />
+        </div>
+        <div class="col-md-7">글 입력후 new 이미지를 출력하는 시간</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_hot">hot 이미지<input type="checkbox" name="chk[bo_hot]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_hot" name="bo_hot" class="form-control text-right" maxlength="4" value="<?=$bo_hot?>"/>
+        </div>
+        <div class="col-md-7">조회수가 설정값 이상이면 hot 이미지 출력</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_image_width">이미지 폭 크기<input type="checkbox" name="chk[bo_image_width]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_image_width" name="bo_image_width" class="form-control text-right" maxlength="4" value="<?=$bo_image_width?>" />
+        </div>
+        <div class="col-md-7">픽셀 (게시판에서 출력되는 이미지의 폭 크기)</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_reply_order">답변 달기<input type="checkbox" name="chk[bo_reply_order]" class="pull-left" value="1" /></label>
+        <div class="col-md-5">
+            <select id="bo_reply_order" name="bo_reply_order" class="form-control">
+                <option value="1">나중에 쓴 답변 아래로 달기 (기본)</option>
+                <option value="0">나중에 쓴 답변 위로 달기</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_sort_field">리스트 정렬 필드<input type="checkbox" name="chk[bo_sort_field]" class="pull-left" value="1" /></label>
+        <div class="col-md-5">
+            <select id="bo_sort_field" name="bo_sort_field" class="form-control">
+                <option value="">wr_num, wr_reply : 기본</option>
+                <option value="wr_datetime asc">wr_datetime asc : 날짜 이전것 부터</option>
+                <option value="wr_datetime desc">wr_datetime desc : 날짜 최근것 부터</option>
+                <option value="wr_hit asc, wr_num, wr_reply">wr_hit asc : 조회수 낮은것 부터</option>
+                <option value="wr_hit desc, wr_num, wr_reply">wr_hit desc : 조회수 높은것 부터</option>
+                <option value="wr_last asc">wr_last asc : 최근수정글 이전것 부터</option>
+                <option value="wr_last desc">wr_last desc : 최근수정글 최근것 부터</option>
+                <option value="wr_comment asc, wr_num, wr_reply">wr_comment asc : 댓글수 낮은것 부터</option>
+                <option value="wr_comment desc, wr_num, wr_reply">wr_comment asc : 댓글수 높은것 부터</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_upload_ext">파일 업로드 확장자<input type="checkbox" name="chk[bo_upload_ext]" class="pull-left" value="1" /></label>
+        <div class="col-md-4">
+            <input type="text" id="bo_upload_ext" name="bo_upload_ext" class="form-control" value="<?=$bo_upload_ext?>" />
+        </div>
+        <div class="col-md-5">"|"로 구분 (gif, jpg, png 제외)</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_upload_size">파일 업로드 제한용량<input type="checkbox" name="chk[bo_upload_size]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_upload_size" name="bo_upload_size" class="form-control text-right" maxlength="10" value="<?=$bo_upload_size?>" />
+        </div>
+        <div class="col-md-7">업로드 파일 한개당 %Kbytes 이하( 최대 <?=$upload_max_size?> 이하, 1M = 1,024 Kbytes )</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_head">상단 컨트롤러 경로<input type="checkbox" name="chk[bo_head]" class="pull-left" value="1" /></label>
+        <div class="col-md-4">
+            <input type="text" id="bo_head" name="bo_head" class="form-control" value="<?=$bo_head?>"/>
+        </div>
+        <div class="col-md-5">컨트롤러 / CSS</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_tail">하단 컨트롤러 경로<input type="checkbox" name="chk[bo_tail]" class="pull-left" value="1" /></label>
+        <div class="col-md-4">
+            <input type="text" id="bo_tail" name="bo_tail" class="form-control" value="<?=$bo_tail?>" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_insert_content">글쓰기 기본 내용<input type="checkbox" name="chk[bo_insert_content]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <textarea id="bo_insert_content" name="bo_insert_content" class="form-control" rows="3"><?=$bo_insert_content?></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_use_search">전체 검색 사용<input type="checkbox" name="chk[bo_use_search]" class="pull-left" value="1" /></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="bo_use_search" name="bo_use_search" value="1" <?=$use_search_chk?> /> 사용
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="bo_order_search">전체 검색 순서<input type="checkbox" name="chk[bo_order_search]" class="pull-left" value="1" /></label>
+        <div class="col-md-2">
+            <input type="text" id="bo_order_search" name="bo_order_search" class="form-control text-right" maxlength="4" value="<?=$bo_order_search?>" />
+        </div>
+        <div class="col-md-7">숫자가 낮은 게시판 부터 검색</div>
+    </div>
 
-	<hr />
-	
-	<p class="text-center">
-		<button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/board/lists';">목록</button>
-	</p>
+    <hr />
+    
+    <p class="text-center">
+        <button type="submit" class="btn btn-lg btn-success">확인</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-lg btn-warning" onclick="document.location.href='<?=ADM_PATH?>/board/lists';">목록</button>
+    </p>
 </fieldset>
 
 </form>
@@ -343,40 +343,40 @@ document.fboard.bo_reply_order.value = '<?=$bo_reply_order?>';
 document.fboard.bo_sort_field.value = '<?=$bo_sort_field?>'; 
 
 $(function() {
-	$('#fboard').validate({
-		rules: {
-			bo_table: { required:true, minlength:3, alphanumunder:true },
-			bo_subject: 'required',
-			bo_admin: { minlength:3, alphanumunder:true },
-			bo_count_modify: { required:true, min:0 },
-			bo_count_delete: { required:true, min:0 },
-			bo_page_rows: { required:true, min:0 },
-			bo_page_rows_comt: { required:true, min:0 },
-			bo_subject_len: { required:true, min:0 },
-			bo_new: { required:true, min:0 },
-			bo_hot: { required:true, min:0 },
-			bo_image_width: { required:true, min:0 },
-			bo_upload_ext: 'required',
-			bo_upload_size: { required:true, min:0 },
-			bo_order_search: { min:0 }
-		},
-		messages: {
-			bo_table: { required:'TABLE을 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
-			bo_subject: '게시판 제목을 입력하세요.',
-			bo_admin : { required:'게시판 관리자를 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
-			bo_count_modify: '숫자가 아닙니다.',
-			bo_count_delete: '숫자가 아닙니다.',
-			bo_page_rows: '숫자가 아닙니다.',
-			bo_page_rows_comt: '숫자가 아닙니다.',
-			bo_subject_len: '숫자가 아닙니다.',
-			bo_new: '숫자가 아닙니다.',
-			bo_hot: '숫자가 아닙니다.',
-			bo_image_width: '숫자가 아닙니다.',
-			bo_upload_ext: '업로드 확장자를 입력하세요.',
-			bo_upload_size: '숫자가 아닙니다.',
-			bo_order_search: '숫자가 아닙니다.'
-		}
-	});
+    $('#fboard').validate({
+        rules: {
+            bo_table: { required:true, minlength:3, alphanumunder:true },
+            bo_subject: 'required',
+            bo_admin: { minlength:3, alphanumunder:true },
+            bo_count_modify: { required:true, min:0 },
+            bo_count_delete: { required:true, min:0 },
+            bo_page_rows: { required:true, min:0 },
+            bo_page_rows_comt: { required:true, min:0 },
+            bo_subject_len: { required:true, min:0 },
+            bo_new: { required:true, min:0 },
+            bo_hot: { required:true, min:0 },
+            bo_image_width: { required:true, min:0 },
+            bo_upload_ext: 'required',
+            bo_upload_size: { required:true, min:0 },
+            bo_order_search: { min:0 }
+        },
+        messages: {
+            bo_table: { required:'TABLE을 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
+            bo_subject: '게시판 제목을 입력하세요.',
+            bo_admin : { required:'게시판 관리자를 입력하세요.', minlength:'최소 3자 이상 입력하세요.' },
+            bo_count_modify: '숫자가 아닙니다.',
+            bo_count_delete: '숫자가 아닙니다.',
+            bo_page_rows: '숫자가 아닙니다.',
+            bo_page_rows_comt: '숫자가 아닙니다.',
+            bo_subject_len: '숫자가 아닙니다.',
+            bo_new: '숫자가 아닙니다.',
+            bo_hot: '숫자가 아닙니다.',
+            bo_image_width: '숫자가 아닙니다.',
+            bo_upload_ext: '업로드 확장자를 입력하세요.',
+            bo_upload_size: '숫자가 아닙니다.',
+            bo_order_search: '숫자가 아닙니다.'
+        }
+    });
 });
 //]]>
 </script>

@@ -4,22 +4,22 @@ function make_category($args=array()) {
     extract($args); // type, code, id, lst
     
     if (isset($lst)) { $lo = 'true';  $first = '전체'; }
-	else             { $lo = 'false'; $first = '선택하세요'; }
+    else             { $lo = 'false'; $first = '선택하세요'; }
     
     $is_multi = FALSE;
     if (is_array($code))
         $is_multi = TRUE;
-	
-	$CI =& get_instance();
-	$CI->load->model('Category_model');
+    
+    $CI =& get_instance();
+    $CI->load->model('Category_model');
     $result = $CI->Category_model->get_category($type, TRUE);
     
     $topt = $sopt = '';
     foreach ($result as $row) {
-    	if (is_numeric($row['code']))
-    		$topt .= "<option value='".$row['code']."'>".$row['ca_name']."</option>";
-		else
-			$sopt .= "<option value='".$row['code']."'>".$row['ca_name']."</option>";
+        if (is_numeric($row['code']))
+            $topt .= "<option value='".$row['code']."'>".$row['ca_name']."</option>";
+        else
+            $sopt .= "<option value='".$row['code']."'>".$row['ca_name']."</option>";
     }
     
     $change = " onchange='changeCate(this, ".$lo.");' ";

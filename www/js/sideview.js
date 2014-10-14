@@ -60,15 +60,15 @@ if (typeof(SIDEVIEW_JS) == 'undefined') {
         this.hideRow = hideRow;
         this.dimRow = dimRow;
     
-		// 쪽지보내기 & 자기소개
-		if (mb_id) {
+        // 쪽지보내기 & 자기소개
+        if (mb_id) {
             this.insertTail("info", "href='javascript:;' onclick=\"win_profile('"+mb_id+"');\"><span class='glyphicon glyphicon-home'></span> 자기소개");
-			this.insertTail("memo", "href='javascript:;' onclick=\"win_memo('member/memo/write/"+mb_id+"');\"><span class='glyphicon glyphicon-comment'></span> 쪽지보내기");
-		}
+            this.insertTail("memo", "href='javascript:;' onclick=\"win_memo('member/memo/write/"+mb_id+"');\"><span class='glyphicon glyphicon-comment'></span> 쪽지보내기");
+        }
         
         // 게시판테이블 아이디가 넘어왔을 경우
         if (typeof rt_bo_table != 'undefined') {
-        	var sca_str = (rt_bo_sca) ? '&sca=' + rt_bo_sca : '';
+            var sca_str = (rt_bo_sca) ? '&sca=' + rt_bo_sca : '';
             if (mb_id) // 회원일 경우 아이디로 검색
                 this.insertTail("mb_id", "href='"+rt_path+"/board/"+rt_bo_table+"/lists?"+sca_str+"&sfl=mb_id&stx="+mb_id+"'><span class='glyphicon glyphicon-search'></span> 아이디로 검색");
             else // 비회원일 경우 이름으로 검색
@@ -78,11 +78,11 @@ if (typeof(SIDEVIEW_JS) == 'undefined') {
         // 최고관리자일 경우
         if (typeof rt_admin != 'undefined') {
             if (mb_id) {
-            	// 회원정보변경
+                // 회원정보변경
                 this.insertTail("modify", "href='"+rt_path+"/" + rt_admin + "/member/form/u/"+mb_id+"' target='_blank'><span class='glyphicon glyphicon-edit'></span> 회원정보변경");
                 // 포인트내역
                 this.insertTail("point", "href='"+rt_path+"/" + rt_admin + "/point/lists?sfl=mb_id&stx="+mb_id+"' target='_blank'><span class='glyphicon glyphicon-barcode'></span> 포인트내역");            
-        	}               
+            }               
         }
     }
 
@@ -104,7 +104,7 @@ if (typeof(SIDEVIEW_JS) == 'undefined') {
             oSideViewLayer.style.top = (getAbsoluteTop(this.curObj) - oSideViewLayer.scrollHeight)+'px';
         else
             oSideViewLayer.style.top = (getAbsoluteTop(this.curObj) + this.curObj.offsetHeight)+'px';
-		
+        
         oSideViewLayer.style.left = (getAbsoluteLeft(this.curObj) - this.curObj.offsetWidth + 14)+'px';
 
         divDisplay(this.targetObj, 'block');

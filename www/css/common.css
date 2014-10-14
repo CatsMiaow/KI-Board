@@ -21,17 +21,21 @@ img { max-width: 100%; }
 
 
 /* custom padding */
-.pdt1 { padding-top	  :5px; } .pdt2 { padding-top   :10px; } .pdt3 { padding-top   :15px; } .pdt4 { padding-top   :20px; }
+.pdt1 { padding-top   :5px; } .pdt2 { padding-top   :10px; } .pdt3 { padding-top   :15px; } .pdt4 { padding-top   :20px; }
 .pdl1 { padding-left  :5px; } .pdl2 { padding-left  :10px; } .pdl3 { padding-left  :15px; } .pdl4 { padding-left  :20px; }
 .pdr1 { padding-right :5px; } .pdr2 { padding-right :10px; } .pdr3 { padding-right :15px; } .pdr4 { padding-right :20px; }
 .pdb1 { padding-bottom:5px; } .pdb2 { padding-bottom:10px; } .pdb3 { padding-bottom:15px; } .pdb4 { padding-bottom:20px; }
 
 
 /* custom margin */
-.mgt1 { margin-top	 :5px; } .mgt2 { margin-top   :10px; } .mgt3 { margin-top   :15px; } .mgt4 { margin-top   :20px; }
+.mgt1 { margin-top   :5px; } .mgt2 { margin-top   :10px; } .mgt3 { margin-top   :15px; } .mgt4 { margin-top   :20px; }
 .mgl1 { margin-left  :5px; } .mgl2 { margin-left  :10px; } .mgl3 { margin-left  :15px; } .mgl4 { margin-left  :20px; }
 .mgr1 { margin-right :5px; } .mgr2 { margin-right :10px; } .mgr3 { margin-right :15px; } .mgr4 { margin-right :20px; }
 .mgb1 { margin-bottom:5px; } .mgb2 { margin-bottom:10px; } .mgb3 { margin-bottom:15px; } .mgb4 { margin-bottom:20px; }
+
+
+/* bootstrap */
+h4.panel-title { word-break:break-all; }
 
 
 /* daum editor modify */

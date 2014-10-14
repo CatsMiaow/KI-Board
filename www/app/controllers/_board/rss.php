@@ -25,9 +25,9 @@ class Rss extends Widget {
         $result = $qry->result_array();
         
         if ($board['bo_use_category']) {
-			$CI =& get_instance();
-			$CI->load->model('Category_model');
-			$category = $CI->Category_model->get_category('bo_'.$bo_table);
+            $CI =& get_instance();
+            $CI->load->model('Category_model');
+            $category = $CI->Category_model->get_category('bo_'.$bo_table);
         }
         
         header("Content-type: text/xml; charset=".$this->config->item('charset'));

@@ -1,28 +1,28 @@
 <div class="container">
 
 <div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-		<div class="page-header">
-			<h4>사진 첨부　<small><span class="glyphicon glyphicon-info-sign"></span> 업로드 진행 상태를 확인하세요.</small></h4>
-		</div>
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="page-header">
+            <h4>사진 첨부　<small><span class="glyphicon glyphicon-info-sign"></span> 업로드 진행 상태를 확인하세요.</small></h4>
+        </div>
 
-		<div id="swfuProgress"></div>
-		<div id="divStatus">0개 업로드 완료</div>
-		<div id="buttonWrap">
-			<span id="swfuButton"></span>
-		</div>
-		<input id="btnCancel" type="button" value="업로드 취소" onclick="swfu.cancelQueue();" disabled="disabled" />                                
-	</div>
-	<div class="col-md-1"></div>
+        <div id="swfuProgress"></div>
+        <div id="divStatus">0개 업로드 완료</div>
+        <div id="buttonWrap">
+            <span id="swfuButton"></span>
+        </div>
+        <input id="btnCancel" type="button" value="업로드 취소" onclick="swfu.cancelQueue();" disabled="disabled" />                                
+    </div>
+    <div class="col-md-1"></div>
 </div>
 
 <hr/>
 
 <footer>
 <p class="text-center">
-	<button type="button" class="btn btn-sm btn-primary" title="등록" onclick="done();">등록</button>&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-sm btn-danger" title="취소" onclick="closeWindow();">취소</button>
+    <button type="button" class="btn btn-sm btn-primary" title="등록" onclick="done();">등록</button>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-sm btn-danger" title="취소" onclick="closeWindow();">취소</button>
 </p>
 </footer>
 
@@ -40,11 +40,11 @@ var _mockdata = new Array()
 function done() {
     if (typeof(execAttach) == 'undefined')
         return;
-	
+    
     for (var i=0; i<_mockdata.length; i++) {        
         execAttach(_mockdata[i]);
     }
-	closeWindow();
+    closeWindow();
 }
 
 function initUploader(){
@@ -55,7 +55,7 @@ function initUploader(){
         return;
     }
 
-	importScript(['swfu/settings']);
+    importScript(['swfu/settings']);
 
     var _attacher = getAttacher('image', _opener);
     registerAction(_attacher);

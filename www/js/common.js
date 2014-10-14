@@ -1,5 +1,5 @@
 if (typeof(COMMON_JS) == 'undefined') {
-	var COMMON_JS = true;
+    var COMMON_JS = true;
 
     /*
      * checkbox를 아이콘( http://getbootstrap.com/components/#glyphicons )으로
@@ -85,11 +85,11 @@ if (typeof(COMMON_JS) == 'undefined') {
 
     // 쪽지 창
     function win_memo(url) {
-		if (!url) url = "member/memo/lists";
+        if (!url) url = "member/memo/lists";
         win_open(url, "winMemo", "left=50,top=50,width=616,height=460,scrollbars=1");
     }
     
-	// 자기소개 창
+    // 자기소개 창
     function win_profile(mb_id) {
         win_open("member/profile/qry/"+mb_id, 'winProfile', 'left=50,top=50,width=400,height=500,scrollbars=1');
     }
@@ -100,13 +100,13 @@ if (typeof(COMMON_JS) == 'undefined') {
         win_open(url, "winZip", "left=50,top=50,width=616,height=460,scrollbars=1");
     }
 
-	// POST 전송, 결과값 리턴
+    // POST 전송, 결과값 리턴
     function post_send(href, parm, del) {
         if (!del || confirm("한번 삭제한 자료는 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?")) { 
-			$.post(rt_path + '/' + href, parm, function(req) {
+            $.post(rt_path + '/' + href, parm, function(req) {
                 document.write(req);
-			});
-		}
+            });
+        }
     }
     
     // POST 이동
@@ -147,13 +147,13 @@ if (typeof(COMMON_JS) == 'undefined') {
     // script 에서 js 파일 로드
     function importScript(FILES) {
         var _importScript = function(filename) { 
-        	if (filename) {
-        		document.write('<script type="text/javascript" src="'+rt_path+'/js/'+filename+'.js"></s'+'cript>');
+            if (filename) {
+                document.write('<script type="text/javascript" src="'+rt_path+'/js/'+filename+'.js"></s'+'cript>');
             }
         };
         
         for (var i=0; i<FILES.length; i++) {
-        	_importScript(FILES[i]);
+            _importScript(FILES[i]);
         }
     }
     
@@ -170,15 +170,15 @@ if (typeof(COMMON_JS) == 'undefined') {
 
     // 팝업 닫기
     function popup_close(id, onday) {
-    	if (onday) {
-    		var today = new Date();
-    		today.setTime(today.getTime() + (60*60*1000*24));
-    		document.cookie = id + "=" + escape( true ) + "; path=/; expires=" + today.toGMTString() + ";";
-    	}
+        if (onday) {
+            var today = new Date();
+            today.setTime(today.getTime() + (60*60*1000*24));
+            document.cookie = id + "=" + escape( true ) + "; path=/; expires=" + today.toGMTString() + ";";
+        }
 
-    	if (window.parent.name.indexOf(id) != -1)
-    		window.close();
-    	else
-    		document.getElementById(id).style.display = 'none';
+        if (window.parent.name.indexOf(id) != -1)
+            window.close();
+        else
+            document.getElementById(id).style.display = 'none';
     }
 }

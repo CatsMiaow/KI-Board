@@ -6,7 +6,7 @@ class Editor extends Widget {
         $board  =& $this->board;
         
         $seg =& $this->seg;
-		$type = $seg->get('type');
+        $type = $seg->get('type');
 
         switch ($type) {
             case 'image': $title = '이미지'; break;
@@ -25,7 +25,7 @@ class Editor extends Widget {
         );
         
         widget::run('head', $head);
-		$this->load->view('board/editor_'.$type, $data);
-		widget::run('tail');
-	}
+        $this->load->view('board/editor_'.$type, $data);
+        widget::run('tail');
+    }
 }

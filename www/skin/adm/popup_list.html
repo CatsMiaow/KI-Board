@@ -1,13 +1,13 @@
 <form class="form-inline" name="fsearch" method="get" action="<?=ADM_PATH?>/popup/lists" onsubmit="return doSearch(this);">
 <div>
-	&deg; <a href="<?=ADM_PATH?>/popup/lists">처음</a> (총 <?=$total_cnt?>개)
-	<p class="pull-right">
-		<select name="sfl" class="form-control span2">
+    &deg; <a href="<?=ADM_PATH?>/popup/lists">처음</a> (총 <?=$total_cnt?>개)
+    <p class="pull-right">
+        <select name="sfl" class="form-control span2">
             <option value="pu_name">이름</option>
         </select>
         <input type="text" name="stx" class="form-control span3" value="<?=$stx?>" />
         <button type="submit" class="btn btn-primary">검색</button>
-	</p>
+    </p>
 </div>
 </form>
 
@@ -15,39 +15,39 @@
 <input type="hidden" name="token" value="<?=$token?>"/>
 
 <table class="table table-condensed table-striped">
-	<thead>
-		<tr>
-			<th><input type="checkbox" id="allcheck" /></th>
-			<th><a href="<?=$sort_pu_name?>">제목</a></th>
-			<th><a href="<?=$sort_pu_type?>">형식</a></th>
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="allcheck" /></th>
+            <th><a href="<?=$sort_pu_name?>">제목</a></th>
+            <th><a href="<?=$sort_pu_type?>">형식</a></th>
             <th><a href="<?=$sort_pu_sdate?>">시작일</a></th>
             <th><a href="<?=$sort_pu_edate?>">종료일</a></th>
             <th><a href="<?=$sort_pu_use?>">사용</a></th>
             <th><?=$s_add?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<? foreach ($list as $o): ?>
-		<tr>
-			<td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
-			<td><input type="text" name="pu_name[<?=$o->id?>]" class="form-control" maxlength="20" value="<?=$o->name?>" /></td>
-			<td><?=$o->type?></td>
-			<td><?=$o->sdate?></td>
-			<td><?=$o->edate?></td>
-			<td><input type="checkbox" name="pu_use[<?=$o->id?>]" <?=$o->use_chk?> value="1" /></td>
-			<td><span class="btn-group"><?=$o->s_pre?><?=$o->s_mod?><?=$o->s_del?></span></td>
-		</tr>
-		<? endforeach; ?>
-	</tbody>
+        </tr>
+    </thead>
+    <tbody>
+        <? foreach ($list as $o): ?>
+        <tr>
+            <td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
+            <td><input type="text" name="pu_name[<?=$o->id?>]" class="form-control" maxlength="20" value="<?=$o->name?>" /></td>
+            <td><?=$o->type?></td>
+            <td><?=$o->sdate?></td>
+            <td><?=$o->edate?></td>
+            <td><input type="checkbox" name="pu_use[<?=$o->id?>]" <?=$o->use_chk?> value="1" /></td>
+            <td><span class="btn-group"><?=$o->s_pre?><?=$o->s_mod?><?=$o->s_del?></span></td>
+        </tr>
+        <? endforeach; ?>
+    </tbody>
 </table>
 
 <div class="clearfix">
-	<button type="button" class="btn btn-info" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/popup/update')">선택수정</button>
-	<button type="button" class="btn btn-danger" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/popup/delete')">선택삭제</button>
+    <button type="button" class="btn btn-info" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/popup/update')">선택수정</button>
+    <button type="button" class="btn btn-danger" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/popup/delete')">선택삭제</button>
 
-	<div class="pull-right">
-		<?=$paging?>
-	</div>
+    <div class="pull-right">
+        <?=$paging?>
+    </div>
 </div>
 
 </form>

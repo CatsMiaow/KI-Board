@@ -1,14 +1,14 @@
 <form class="form-inline" name="fsearch" method="get" action="<?=ADM_PATH?>/point/lists" onsubmit="return doSearch(this);">
 <div>
-	&deg; <a href="<?=ADM_PATH?>/point/lists">처음</a> (건수 : <?=$total_cnt?>) / <?=$total_pnt?>
-	<p class="pull-right">
-		<select name="sfl" class="form-control span3">
-			<option value="mb_id">회원아이디</option>
-			<option value="po_content">내용</option>
+    &deg; <a href="<?=ADM_PATH?>/point/lists">처음</a> (건수 : <?=$total_cnt?>) / <?=$total_pnt?>
+    <p class="pull-right">
+        <select name="sfl" class="form-control span3">
+            <option value="mb_id">회원아이디</option>
+            <option value="po_content">내용</option>
         </select>
         <input type="text" name="stx" class="form-control span3" value="<?=$stx?>" />
         <button type="submit" class="btn btn-primary">검색</button>
-	</p>
+    </p>
 </div>
 </form>
 
@@ -16,78 +16,78 @@
 <input type="hidden" name="token" value="<?=$token?>"/>
 
 <table class="table table-condensed table-striped">
-	<thead>
-		<tr>
+    <thead>
+        <tr>
             <th><input type="checkbox" id="allcheck" /></th>
-		    <th><a href="<?=$sort_mb_id?>">회원아이디</a></th>
-		    <th>이름</th>
-		    <? if ($use_nick): ?><th>별명</th><? endif; ?>
-		    <th><a href="<?=$sort_po_datetime?>">일시</a></th>
-		    <th><a href="<?=$sort_po_content?>">포인트 내용</a></th>
-		    <th><a href="<?=$sort_po_point?>">포인트</a></th>
-		    <th>포인트합</th>
-		</tr>
-	</thead>
-	<tbody>
-		<? foreach ($list as $o): ?>
-		<tr>
-			<td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
-			<td>
-				<input type="hidden" name="mb_ids[<?=$o->id?>]" value="<?=$o->mb_id?>" />
-				<a href="<?=ADM_PATH?>/point/lists?sfl=mb_id&stx=<?=$o->mb_id?>"><?=$o->mb_id?></a>
-			</td>
-			<td><?=$o->mb_name?></td>
-			<? if ($use_nick): ?><td><?=$o->mb_nick?></td><? endif; ?>
-			<td><?=$o->datetime?></td>
-			<td><?=$o->content?></td>
-			<td><?=$o->point?></td>
-			<td><?=$o->mb_point?></td>
-		</tr>
-		<? endforeach; ?>
-	</tbody>
+            <th><a href="<?=$sort_mb_id?>">회원아이디</a></th>
+            <th>이름</th>
+            <? if ($use_nick): ?><th>별명</th><? endif; ?>
+            <th><a href="<?=$sort_po_datetime?>">일시</a></th>
+            <th><a href="<?=$sort_po_content?>">포인트 내용</a></th>
+            <th><a href="<?=$sort_po_point?>">포인트</a></th>
+            <th>포인트합</th>
+        </tr>
+    </thead>
+    <tbody>
+        <? foreach ($list as $o): ?>
+        <tr>
+            <td><input type="checkbox" name="chk[]" value="<?=$o->id?>" /></td>
+            <td>
+                <input type="hidden" name="mb_ids[<?=$o->id?>]" value="<?=$o->mb_id?>" />
+                <a href="<?=ADM_PATH?>/point/lists?sfl=mb_id&stx=<?=$o->mb_id?>"><?=$o->mb_id?></a>
+            </td>
+            <td><?=$o->mb_name?></td>
+            <? if ($use_nick): ?><td><?=$o->mb_nick?></td><? endif; ?>
+            <td><?=$o->datetime?></td>
+            <td><?=$o->content?></td>
+            <td><?=$o->point?></td>
+            <td><?=$o->mb_point?></td>
+        </tr>
+        <? endforeach; ?>
+    </tbody>
 </table>
 
 <div class="clearfix">
-	<button type="button" class="btn btn-danger" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/point/delete')">선택삭제</button>
+    <button type="button" class="btn btn-danger" onclick="slt_check(this.form, '<?=ADM_PATH?>/_trans/point/delete')">선택삭제</button>
 
-	<div class="pull-right">
-		<?=$paging?>
-	</div>
+    <div class="pull-right">
+        <?=$paging?>
+    </div>
 </div>
 
 </form>
 
 
 <form id="fpoint_upt" class="form-horizontal" name="fpoint_upt" method="post" action="<?=ADM_PATH?>/point/lists">
-<input type="hidden" name="token" value="<?=$token?>"/>	
+<input type="hidden" name="token" value="<?=$token?>"/>    
 
 <?=validation_errors('<pre>','</pre>')?>
 <fieldset>
-	<legend>&deg; <strong>포인트 입력</legend>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="mb_id">회원아이디</label>
-		<div class="col-md-9">
-			<input type="text" id="mb_id" name="mb_id" class="form-control span3" value="<?=$stx_mb_id?>" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="po_content">포인트내용</label>
-		<div class="col-md-9">
-			<input type="text" id="po_content" name="po_content" class="form-control span4" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label" for="po_point">포인트</label>
-		<div class="col-md-9">
-			<input type="text" id="po_point" name="po_point" class="form-control span2 text-right" />
-		</div>
-	</div>
+    <legend>&deg; <strong>포인트 입력</legend>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="mb_id">회원아이디</label>
+        <div class="col-md-9">
+            <input type="text" id="mb_id" name="mb_id" class="form-control span3" value="<?=$stx_mb_id?>" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="po_content">포인트내용</label>
+        <div class="col-md-9">
+            <input type="text" id="po_content" name="po_content" class="form-control span4" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="po_point">포인트</label>
+        <div class="col-md-9">
+            <input type="text" id="po_point" name="po_point" class="form-control span2 text-right" />
+        </div>
+    </div>
 
-	<hr />
-	
-	<p class="text-center">
-		<button type="submit" class="btn btn-lg btn-success">확인</button>
-	</p>
+    <hr />
+    
+    <p class="text-center">
+        <button type="submit" class="btn btn-lg btn-success">확인</button>
+    </p>
 </fieldset>
 
 </form>
@@ -102,18 +102,18 @@ document.fsearch.sfl.value = '<?=$sfl?>';
 <? endif; ?>
 
 $(function() {
-	$('#fpoint_upt').validate({
-		rules: {
-			mb_id: 'required',
-			po_content: 'required',
-			po_point: { 'required':true, 'number':true }
-		},
-		messages: {
-			mb_id: '회원 아이디를 입력하세요.',
-			po_content: '포인트 내용을 입력하세요.',
-			po_point: { required:'포인트를 입력하세요.', 'number':'숫자가 아닙니다.' }
-		}
-	});
+    $('#fpoint_upt').validate({
+        rules: {
+            mb_id: 'required',
+            po_content: 'required',
+            po_point: { 'required':true, 'number':true }
+        },
+        messages: {
+            mb_id: '회원 아이디를 입력하세요.',
+            po_content: '포인트 내용을 입력하세요.',
+            po_point: { required:'포인트를 입력하세요.', 'number':'숫자가 아닙니다.' }
+        }
+    });
 });
 //]]>
 </script>

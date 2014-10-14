@@ -1,32 +1,32 @@
 <div class="page-header">
-	&deg; 건수 : <?=$total_cnt?>&nbsp;통
+    &deg; 건수 : <?=$total_cnt?>&nbsp;통
 </div>
 
 <table class="table table-condensed table-striped">
-	<thead>
-		<tr>
-			<th>No</th>
-			<th>제목</th>
-			<th>작성일시</th>
-			<th>테스트</th>
-			<th>보내기</th>
-			<th><?=$s_add?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<? foreach ($list as $o): ?>
-		<tr>
-			<td><?=$o->num?></td>
-			<td><?=$o->subject?></td>
-			<td><?=$o->time?></td>
-			<td><a href="<?=ADM_PATH?>/mail/test/<?=$o->id?>">테스트</a></td>
-			<td><a href="<?=ADM_PATH?>/mail/select_form/<?=$o->id?>">보내기</a></td>
-			<td><span class="btn-group"><?=$o->s_mod?><?=$o->s_del?><?=$o->s_vie?></span></td>
-		</tr>
-		<? endforeach; ?>
-	</tbody>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>제목</th>
+            <th>작성일시</th>
+            <th>테스트</th>
+            <th>보내기</th>
+            <th><?=$s_add?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <? foreach ($list as $o): ?>
+        <tr>
+            <td><?=$o->num?></td>
+            <td><?=$o->subject?></td>
+            <td><?=$o->time?></td>
+            <td><a href="<?=ADM_PATH?>/mail/test/<?=$o->id?>">테스트</a></td>
+            <td><a href="<?=ADM_PATH?>/mail/select_form/<?=$o->id?>">보내기</a></td>
+            <td><span class="btn-group"><?=$o->s_mod?><?=$o->s_del?><?=$o->s_vie?></span></td>
+        </tr>
+        <? endforeach; ?>
+    </tbody>
 </table>
 
 <div class="pull-right">
-	<?=$paging?>
+    <?=$paging?>
 </div>
