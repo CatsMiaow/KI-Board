@@ -7,7 +7,7 @@ class Widget {
         $this->_assign_libraries();
     }
 
-    function run($controller) {
+    public static function run($controller) {
         if (strpos($controller, '.') !== FALSE) {
             list($controller, $method) = explode('.', $controller);
         }
@@ -20,7 +20,7 @@ class Widget {
         // class name
         $class = end(explode('/', $controller));
 
-        if ($class =& new $class()) {
+        if ($class = new $class()) {
             if (method_exists($class, $method)) {
                 $args = func_get_args();
                 return call_user_func_array(array($class, $method), array_slice($args, 1));

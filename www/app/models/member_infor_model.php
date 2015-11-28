@@ -6,32 +6,34 @@ class Member_infor_model extends CI_Model {
 
     function insert($mb_nick) {
         $sql = array(
-            'mb_id' => $this->input->post('mb_id'),
-            'mb_password' => $this->encrypt->encode($this->input->post('mb_password')),
-            'mb_name' => $this->input->post('mb_name'),
-            'mb_sex' => $this->input->post('mb_sex'),
-            'mb_birth' => $this->input->post('mb_birth'),
-            'mb_nick' => $mb_nick,
-            'mb_nick_date' => TIME_YMD,
-            'mb_password_q' => $this->input->post('mb_password_q'),
-            'mb_password_a' => $this->input->post('mb_password_a'),
-            'mb_email' => $this->input->post('mb_email'),
-            'mb_homepage' => $this->input->post('mb_homepage'),
-            'mb_tel' => $this->input->post('mb_tel'),
-            'mb_hp' => $this->input->post('mb_hp'),
-            'mb_zip' => $this->input->post('mb_zip1').'-'.$this->input->post('mb_zip2'),
-            'mb_addr1' => $this->input->post('mb_addr1'),
-            'mb_addr2' => $this->input->post('mb_addr2'),
-            'mb_profile' => $this->input->post('mb_profile', TRUE),
+            'mb_id'          => $this->input->post('mb_id'),
+            'mb_password'    => $this->encrypt->encode($this->input->post('mb_password')),
+            'mb_name'        => $this->input->post('mb_name'),
+            'mb_sex'         => $this->input->post('mb_sex'),
+            'mb_nick'        => $mb_nick,
+            'mb_nick_date'   => TIME_YMD,
+            'mb_password_q'  => $this->input->post('mb_password_q'),
+            'mb_password_a'  => $this->input->post('mb_password_a'),
+            'mb_email'       => $this->input->post('mb_email'),
+            'mb_homepage'    => $this->input->post('mb_homepage'),
+            'mb_tel'         => $this->input->post('mb_tel'),
+            'mb_hp'          => $this->input->post('mb_hp'),
+            'mb_zip'         => $this->input->post('mb_zip1').'-'.$this->input->post('mb_zip2'),
+            'mb_addr1'       => $this->input->post('mb_addr1'),
+            'mb_addr2'       => $this->input->post('mb_addr2'),
+            'mb_profile'     => $this->input->post('mb_profile', TRUE),
             'mb_today_login' => TIME_YMDHIS,
-            'mb_datetime' => TIME_YMDHIS,
-            'mb_ip' => $this->input->server('REMOTE_ADDR'),
-            'mb_level' => $this->config->item('cf_register_level'),
-            'mb_login_ip' => $this->input->server('REMOTE_ADDR'),
-            'mb_mailling' => $this->input->post('mb_mailling'),
-            'mb_open' => $this->input->post('mb_open'),
-            'mb_open_date' => TIME_YMD
+            'mb_datetime'    => TIME_YMDHIS,
+            'mb_ip'          => $this->input->server('REMOTE_ADDR'),
+            'mb_level'       => $this->config->item('cf_register_level'),
+            'mb_login_ip'    => $this->input->server('REMOTE_ADDR'),
+            'mb_mailling'    => $this->input->post('mb_mailling'),
+            'mb_open'        => $this->input->post('mb_open'),
+            'mb_open_date'   => TIME_YMD
         );
+
+        if ($this->input->post('mb_birth'))
+            $sql['mb_birth'] = $this->input->post('mb_birth');
 
         // 이메일 인증을 사용하지 않는다면 이메일 인증시간을 바로 넣는다
         if (!$this->config->item('cf_use_email_certify'))

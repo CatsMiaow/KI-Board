@@ -7,9 +7,14 @@ if (typeof(KCAPTCHA_JS) == 'undefined') {
       
     $(function() {
         $('body').on('click', '#kcaptcha', function() {
-            $.post(rt_path + '/_trans/kcaptcha/session', function(data) {
-                $('#kcaptcha').attr('src', rt_path + '/_trans/kcaptcha/image/' + (new Date).getTime());
-                md5_norobot_key = data;
+            $.ajax({
+                type: 'POST',
+                url: rt_path + '/_trans/kcaptcha/session',
+                contentType: 'application/x-www-form-urlencoded',
+                success: function(data) {
+                    $('#kcaptcha').attr('src', rt_path + '/_trans/kcaptcha/image/' + (new Date).getTime());
+                    md5_norobot_key = data;
+                }
             });
         });
         $('#kcaptcha').trigger('click');

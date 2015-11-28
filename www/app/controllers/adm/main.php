@@ -9,21 +9,7 @@ class Main extends CI_Controller {
 
     function index() {
         // $this->output->cache(1440); // 캐시 되고 있는동안 common 작동 안함
-
-        /* Apache 모듈 내역
-        $apache_m = @apache_get_modules();
-        $apache_modules = '';
-        $i = 1;
-        foreach ($apache_m as $row) {
-            $apache_modules .= $row.' ';
-            if ($i == 5) {
-                $apache_modules .= '<br/>';
-                $i = 1;
-            } else
-                $i++;
-        }
-        */
-
+        
         // 계정의 사용량을 구함 
         $account_space = `du -sb`; 
         $account_space = substr($account_space,0,strlen($account_space)-3);
@@ -80,8 +66,6 @@ class Main extends CI_Controller {
             'account_space' => byte_format($account_space),
             'data_space' => byte_format($data_space),
             'code_space' => byte_format($account_space - $data_space),
-            'apache_version' => apache_get_version(),
-            //'apache_modules' => $apache_modules,
             'php_version' => phpversion(),
             'zend_version' => zend_version(),
             'gd_version' => $gd_version,

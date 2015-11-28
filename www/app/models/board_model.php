@@ -253,13 +253,15 @@ class Board_model extends CI_Model {
     }
     
     function write_insert($bo_table, $wr_content, $wr_num, $wr_reply, $mb, $bo_notice) {
+        $wr_option = array($this->input->post('editor'),$this->input->post('secret'),$this->input->post('mail'),$this->input->post('nocomt'));
+
         $this->db->insert('ki_write', array(
 			'bo_table'    => $bo_table,
 			'wr_num'      => $wr_num,
 			'wr_reply'    => $wr_reply,
 			'wr_comment'  => '0',
 			'ca_code'     => ($this->input->post('ca_code')) ? str_replace('-', '.', $this->input->post('ca_code')) : '',
-			'wr_option'   => $this->input->post('editor').','.$this->input->post('secret').','.$this->input->post('mail').','.$this->input->post('nocomt'),
+			'wr_option'   => implode(',', array_filter($wr_option)),
 			'wr_subject'  => $this->input->post('wr_subject'),
 			'wr_content'  => $wr_content,
 			'wr_hit'      => '0',
@@ -292,14 +294,16 @@ class Board_model extends CI_Model {
     
     function write_update($bo_table, $wr_content, $wr_id, $mb, $bo_notice) {
         $ca_code = ($this->input->post('ca_code')) ? str_replace('-', '.', $this->input->post('ca_code')) : '';
+        $wr_option = array($this->input->post('editor'),$this->input->post('secret'),$this->input->post('mail'),$this->input->post('nocomt'));
+        
         $sql = array(
-            'ca_code'     => $ca_code,
-            'wr_option'  => $this->input->post('editor').','.$this->input->post('secret').','.$this->input->post('mail').','.$this->input->post('nocomt'),
+            'ca_code'    => $ca_code,
+            'wr_option'  => implode(',', array_filter($wr_option)),
             'wr_subject' => $this->input->post('wr_subject'),
             'wr_content' => $wr_content,
-            'mb_id'         => $mb['mb_id'],
-            'wr_name'     => $mb['wr_name'],
-            'wr_email'     => $mb['wr_email']
+            'mb_id'      => $mb['mb_id'],
+            'wr_name'    => $mb['wr_name'],
+            'wr_email'   => $mb['wr_email']
         );
         
         if ($this->input->post('wr_password')) {
