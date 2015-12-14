@@ -19,9 +19,12 @@ app/config/routes.php의 default\_controller에 설정되어 있습니다.
 
 4. database를 알아서 등록한다.
 
-5. 폴더 권한 0707 설정
+5. 폴더 생성 및 권한 0707 설정
 
- * data 폴더 및 하위 폴더
+ * /www/data
+ * /www/data/file
+ * /www/data/member
+ * /www/data/temp
  * app/cache
  * app/logs
 
