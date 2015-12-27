@@ -8,8 +8,8 @@ class Board_file_model extends CI_Model {
     function file_insert($bo_table, $wr_id, $values, $editor=0) {
         if (!$values) return FALSE;
         
-        $this->db->query('insert into ki_board_file ( bo_table, wr_id, bf_editor, bf_no, bf_source, bf_file, bf_download, bf_filesize, bf_width, bf_height, bf_type, bf_datetime ) values '.$values);
-        
+        $this->db->insert_batch('ki_board_file', $values);
+
         $cnt = $this->db->affected_rows();
         if ($cnt > 0)
             $this->file_count_update($bo_table, $wr_id, '+ '.$cnt, $editor);

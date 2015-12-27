@@ -199,7 +199,7 @@ class Board_write extends CI_Controller {
                 $fnames = $this->input->post('fnames'); // 파일원본
                 
                 $this->load->model('Board_file_model');
-                $val_img = $val_file = ''; $time = time().'_';
+                $val_img = $val_file = array(); $time = time().'_';
                 $base_url = $this->config->item('base_url').RT_PATH;
                 
                 // Images
@@ -238,13 +238,27 @@ class Board_write extends CI_Controller {
                             $byte = @filesize($newimg);
                             $size = @getimagesize($newimg);
                             
-                            $val_img .= "('".$bo_table."','".$wr_id."','1','".$no."','".$inames[$key]."','".$filename."','0','".$byte."','".$size[0]."','".$size[1]."','".$size[2]."','".TIME_YMDHIS."'),";
+                            $val_img[] = array(
+                                'bo_table' => $bo_table,
+                                'wr_id' => $wr_id,
+                                'bf_editor' => 1,
+                                'bf_no' => $no,
+                                'bf_source' => $inames[$key],
+                                'bf_file' => $filename,
+                                'bf_download' => 0,
+                                'bf_filesize' => $byte,
+                                'bf_width' => $size[0] ? $size[0] : 0,
+                                'bf_height' => $size[1] ? $size[1] : 0,
+                                'bf_type' => $size[2] ? $size[2] : 0,
+                                'bf_datetime' => TIME_YMDHIS
+                            );
+                            
                             $tstr_img[] = $base_url.'/data/temp/'.$img;
                             $nstr_img[] = $base_url.'/data/file/'.$bo_table.'/'.$filename;
                             $no++;
                         }
                     }
-                    if ($val_img = substr($val_img, 0, -1)) {
+                    if (count($val_img) > 0) {
                         $wr_content = str_replace($tstr_img, $nstr_img, $wr_content);
                         $this->Board_file_model->file_insert($bo_table, $wr_id, $val_img, TRUE);
                     }
@@ -291,19 +305,33 @@ class Board_write extends CI_Controller {
                             $byte = @filesize($newfile);
                             $size = @getimagesize($newfile);
                             
-                            $val_file .= "('".$bo_table."','".$wr_id."','0','".$no."','".$fnames[$key]."','".$filename."','0','".$byte."','".$size[0]."','".$size[1]."','".$size[2]."','".TIME_YMDHIS."'),";
+                            $val_file[] = array(
+                                'bo_table' => $bo_table,
+                                'wr_id' => $wr_id,
+                                'bf_editor' => 0,
+                                'bf_no' => $no,
+                                'bf_source' => $fnames[$key],
+                                'bf_file' => $filename,
+                                'bf_download' => 0,
+                                'bf_filesize' => $byte,
+                                'bf_width' => $size[0] ? $size[0] : 0,
+                                'bf_height' => $size[1] ? $size[1] : 0,
+                                'bf_type' => $size[2] ? $size[2] : 0,
+                                'bf_datetime' => TIME_YMDHIS
+                            );
+                            
                             $tstr_file[] = $base_url.'/data/temp/'.$file;
                             $nstr_file[] = $base_url.'/board/'.$bo_table.'/download/wr_id/'.$wr_id.'/no/'.$no;
                             $no++;
                         }
                     }
-                    if ($val_file = substr($val_file, 0, -1)) {
+                    if (count($val_file) > 0) {
                         $wr_content = str_replace($tstr_file, $nstr_file, $wr_content);
                         $this->Board_file_model->file_insert($bo_table, $wr_id, $val_file);                        
                     }
                 }
                 
-                if ($val_img || $val_file)
+                if (count($val_img) > 0 || count($val_file) > 0)
                     $this->Board_model->content_update($bo_table, $wr_id, $wr_content);
             }
             
