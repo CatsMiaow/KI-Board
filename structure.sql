@@ -258,8 +258,9 @@ CREATE  TABLE IF NOT EXISTS .`ki_write` (
   `wr_ip` VARCHAR(20) NOT NULL ,
   `wr_count_file` TINYINT(4) UNSIGNED NOT NULL ,
   `wr_count_image` TINYINT(4) UNSIGNED NOT NULL ,
-  PRIMARY KEY (`bo_table`, `wr_id`) ,
+  PRIMARY KEY (`wr_id`) ,
   INDEX `list` (`bo_table` ASC, `wr_num` ASC, `wr_reply` ASC, `ca_code` ASC) );
+  -- wr_id가 auto increment 라서 wr_id 만으로도 pkey가 될 것 같습니다. mysql 명령으로 sql 파일 집어 넣을 때 에러가 나더라구요..
 
 
 -- -----------------------------------------------------
@@ -280,5 +281,6 @@ CREATE  TABLE IF NOT EXISTS .`ki_comment` (
   `co_datetime` DATETIME NOT NULL ,
   `co_last` DATETIME NOT NULL ,
   `co_ip` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`bo_table`, `wr_id`, `co_id`) ,
+  PRIMARY KEY (`co_id`) ,
   INDEX `list` (`bo_table` ASC, `wr_id` ASC, `co_num` ASC, `co_reply` ASC, `ca_code` ASC) );
+  -- co_id가 auto increment 라서 co_id 만으로도 pkey가 될 것 같습니다. mysql 명령으로 sql 파일 집어 넣을 때 에러가 나더라구요..
